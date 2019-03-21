@@ -1,1 +1,1 @@
-web: java -jar build/libs/InteractiveShoppingList.jar
+web: java $JAVA_OPTS -jar InteractiveShoppingList.jar
