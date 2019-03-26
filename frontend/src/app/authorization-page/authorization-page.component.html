@@ -1,67 +1,84 @@
-<div class="container-fluid bg" > 
-    {{loginForm.value | json}}
-    {{registrationForm.value | json}}
+<div class="container-fluid bg">
+  {{loginForm.value | json}}
+  {{registrationForm.value | json}}
 
-    <div class="row">
-      <div class="col-md-2 col-sm-4 col-xs-12"></div>
-      <div class="col-md-4 col-sm-4 col-xs-12">
-        
-         <form [formGroup]="loginForm" class="form-container-sign-in">
-            <h2>Zaloguj się</h2><br>
-          <div class="form-group">
-            <label class="lb">Nazwa Użytkownika</label>
-            <input [class.is-invalid]="userName.invalid && userName.touched" 
-                    formControlName="userName" type="text" class="form-control"  placeholder="Nazwa" >
-                <small [class.d-none]="userName.valid || userName.untouched" class="text-danger">Nazwa użytkownika jest wymagana</small>
-          </div>
-          <div class="form-group">
-            <label  class="lb">Hasło</label>
-            <input [class.is-invalid]="password.invalid && password.touched" 
-                    formControlName="password" type="password" class="form-control" placeholder="Hasło"> 
-                <small [class.d-none]="password.valid || password.untouched"  class="text-danger">Hasło jest wymagane</small>
-          </div>
-          <button  (click)="onSubmit()" [disabled]="!loginForm.valid" type="submit" class="btn btn-success btn-block">Zaloguj</button>
-        </form>
-       
-      </div>
-     
-      <div class="col-md-4 col-sm-4 col-xs-12">
-              <form [formGroup]="registrationForm" class="form-container-sign-up">
-                  <h2>.. lub załóż nowe konto</h2><br>
-                  <div class="form-group">
-                      <label class="lb">E-mail</label>
-                      <input [class.is-invalid]="newEmail.invalid && newEmail.touched" formControlName="newEmail"  type="email" class="form-control"   placeholder="Email">
-                      <small [class.d-none]="newEmail.valid || newEmail.untouched" class="text-danger">E-mail jest wymagany</small>
-                    </div>
-                <div class="form-group">
-                  <label  class="lb">Nazwa Użytkownika</label>
-                  <input [class.is-invalid]="newUserName.invalid && newUserName.touched" formControlName="newUserName" type="email" class="form-control"   placeholder="Nazwa">
-                    <div *ngIf="newUserName.invalid && newUserName.touched">
-                      <small *ngIf="newUserName.errors?.required" [class.d-none]="newUserName.valid || newUserName.untouched" class="text-danger">Nazwa użytkownika jest wymagana</small>
-                      <small *ngIf="newUserName.errors?.minlength" [class.d-none]="newUserName.valid || newUserName.untouched" class="text-danger">Nazwa musi posiadać minimum 4 znaki</small>
-                    </div>
-                </div>
-                <div class="form-group">
-                  <label  class="lb">Hasło</label>
-                  <input [class.is-invalid]="newPassword.invalid && newPassword.touched" formControlName="newPassword" type="password" class="form-control" placeholder="Hasło">
-                    <div *ngIf="newPassword.invalid && newPassword.touched">
-                      <small *ngIf="newPassword.errors?.required" [class.d-none]="newPassword.valid || newPassword.untouched" class="text-danger">Hasło jest wymagane</small>
-                      <small *ngIf="newPassword.errors?.minlength" [class.d-none]="newPassword.valid || newPassword.untouched" class="text-danger">Hasło musi posiadać minimum 8 znaków</small>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label  class="lb">Potwierdź Hasło</label>
-                    <input [class.is-invalid]="registrationForm.errors?.misMatch || newConfirmPassword.invalid && newConfirmPassword.touched" formControlName="newConfirmPassword" type="password" class="form-control" placeholder="Potwierdź hasło">
-                      <div *ngIf="registrationForm.errors?.misMatch || newConfirmPassword.invalid && newConfirmPassword.touched">
-                        <small class="text-danger" *ngIf="newConfirmPassword.errors?.required">Musisz potwierdzić hasło</small>
-                        <small class="text-danger" *ngIf="registrationForm.errors?.misMatch">Hasła muszą być takie same</small> 
-                      </div>
-                                    
-               </div>
-                <button  [disabled]="!registrationForm.valid" type="submit" class="btn btn-success btn-block">Zarejestruj</button>
-              </form>
+  <div class="row">
+    <div class="col-md-2 col-sm-4 col-xs-12"></div>
+    <div class="col-md-4 col-sm-4 col-xs-12">
 
-      </div>
-      <div class="col-md-2 col-sm-4 col-xs-12"></div>
+      <form [formGroup]="loginForm" class="form-container-sign-in">
+        <h2>Log in</h2><br>
+        <div class="form-group">
+          <label class="lb">Username</label>
+          <input [class.is-invalid]="userName.invalid && userName.touched"
+                 formControlName="userName" type="text" class="form-control" placeholder="Username">
+          <small [class.d-none]="userName.valid || userName.untouched" class="text-danger">Username is required
+          </small>
+        </div>
+        <div class="form-group">
+          <label class="lb">Password</label>
+          <input [class.is-invalid]="password.invalid && password.touched"
+                 formControlName="password" type="password" class="form-control" placeholder="Password">
+          <small [class.d-none]="password.valid || password.untouched" class="text-danger">Password is required</small>
+        </div>
+        <button (click)="onSubmit()" [disabled]="!loginForm.valid" type="submit" class="btn btn-success btn-block">
+          Log in
+        </button>
+      </form>
+
     </div>
+
+    <div class="col-md-4 col-sm-4 col-xs-12">
+      <form [formGroup]="registrationForm" class="form-container-sign-up">
+        <h2>Create new account</h2><br>
+        <div class="form-group">
+          <label class="lb">E-mail</label>
+          <input [class.is-invalid]="newEmail.invalid && newEmail.touched" formControlName="newEmail" type="email"
+                 class="form-control" placeholder="Email">
+          <small [class.d-none]="newEmail.valid || newEmail.untouched" class="text-danger">E-mail is required</small>
+        </div>
+        <div class="form-group">
+          <label class="lb">Username</label>
+          <input [class.is-invalid]="newUserName.invalid && newUserName.touched" formControlName="newUserName"
+                 type="email" class="form-control" placeholder="Username">
+          <div *ngIf="newUserName.invalid && newUserName.touched">
+            <small *ngIf="newUserName.errors?.required" [class.d-none]="newUserName.valid || newUserName.untouched"
+                   class="text-danger">Username is required
+            </small>
+            <small *ngIf="newUserName.errors?.minlength" [class.d-none]="newUserName.valid || newUserName.untouched"
+                   class="text-danger">Username need to be at least 4 characters long
+            </small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="lb">Password</label>
+          <input [class.is-invalid]="newPassword.invalid && newPassword.touched" formControlName="newPassword"
+                 type="password" class="form-control" placeholder="Password">
+          <div *ngIf="newPassword.invalid && newPassword.touched">
+            <small *ngIf="newPassword.errors?.required" [class.d-none]="newPassword.valid || newPassword.untouched"
+                   class="text-danger">Password is required
+            </small>
+            <small *ngIf="newPassword.errors?.minlength" [class.d-none]="newPassword.valid || newPassword.untouched"
+                   class="text-danger">Password need to be at least 8 characters long
+            </small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="lb">Confirm password</label>
+          <input
+            [class.is-invalid]="registrationForm.errors?.misMatch || newConfirmPassword.invalid && newConfirmPassword.touched"
+            formControlName="newConfirmPassword" type="password" class="form-control" placeholder="Confirm password">
+          <div *ngIf="registrationForm.errors?.misMatch || newConfirmPassword.invalid && newConfirmPassword.touched">
+            <small class="text-danger" *ngIf="newConfirmPassword.errors?.required">You need to confirm password</small>
+            <small class="text-danger" *ngIf="registrationForm.errors?.misMatch">Passwords must match</small>
+          </div>
+
+        </div>
+        <button [disabled]="!registrationForm.valid" type="submit" class="btn btn-success btn-block">Register
+        </button>
+      </form>
+
+    </div>
+    <div class="col-md-2 col-sm-4 col-xs-12"></div>
+  </div>
 </div>
