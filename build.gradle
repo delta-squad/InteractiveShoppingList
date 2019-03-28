@@ -41,7 +41,11 @@ dependencies {
 }
 
 bootJar {
-    mainClassName = 'com.delta.InteractiveShoppingList'
+    mainClassName = 'com.delta.InteractiveShoppingList.InteractiveShoppingListApplication'
+}
+
+springBoot {
+    mainClassName = 'com.delta.InteractiveShoppingList.InteractiveShoppingListApplication'
 }
 
 task stage(type: Copy, dependsOn: [clean, build]) {
