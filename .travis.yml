@@ -3,3 +3,6 @@ deploy:
   provider: heroku
   api_key:
     secure: "89dae46e-5ba5-4163-b9b7-92532e02bd73"
+
+before_script:
+ - chmod +x ./gradlew build connectedCheck
