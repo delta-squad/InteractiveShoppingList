@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {PasswordValidator} from './shared/password.validator';
 import {Router} from '@angular/router';
+import {EnrollmentService} from "../enrollment.service";
 
 @Component({
   selector: 'app-authorization-page',
@@ -19,7 +20,7 @@ export class AuthorizationPageComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
-  constructor(private fb: FormBuilder, private _router: Router) {
+  constructor(private fb: FormBuilder, private _router: Router, private _service: EnrollmentService) {
   }
 
   loginForm = this.fb.group({
@@ -50,13 +51,19 @@ export class AuthorizationPageComponent implements OnInit {
     return this.registrationForm.get('newConfirmPassword');
   }
 
-  onSubmit() {
-    if (this.loginForm.get('userName').value === "admin" && this.loginForm.get('password').value === "admin") {
-      alert("Logged in to admin panel");
-      console.log(this.loginForm);
-      this._router.navigateByUrl('dashboard')
-    } else {
-      alert("Not implemented yet");
-    }
+  signIn() {
+    this._service.sendData(this.loginForm.value)
+      .subscribe(
+        response => console.log(this._router.navigateByUrl('dashboard'), response),
+        error => console.error('Error', error)
+      );
+  }
+  signUp()
+  {
+    this._service.sendData(this.registrationForm.value)
+      .subscribe(
+        response => console.log(alert("You have been successfully singed up! "), response),
+        error => console.error('Error', error)
+      );
   }
 }
