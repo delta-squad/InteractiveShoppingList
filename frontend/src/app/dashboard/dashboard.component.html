@@ -1,0 +1,42 @@
+<div class="background">
+  <div class="head">
+    <h2>Interactive shopping list</h2>
+  </div>
+  <div class="main-row">
+    <div class="menu">
+      <mat-nav-list>
+        <a mat-list-item>
+          <h5>My first list</h5>
+        </a>
+        <hr>
+        <a mat-list-item>
+          <h5>Sunday shopping list</h5>
+        </a>
+        <hr>
+        <a mat-list-item>
+          <h5>Must-haves</h5>
+        </a>
+        <hr>
+        <a mat-list-item>
+          <button class="plus-button">+</button>
+        </a>
+      </mat-nav-list>
+    </div>
+    <div class="products-list">
+      <h1>Current list title</h1>
+      <mat-selection-list>
+        <mat-list-option class="nav-caption" *ngFor="let product of products">
+          {{product}}
+        </mat-list-option>
+      </mat-selection-list>
+      <button class="plus-button">+</button>
+    </div>
+  </div>
+  <div class="foot">
+    <label >All rights reserved ©2019</label>
+  </div>
+</div>
+
+
+
+
