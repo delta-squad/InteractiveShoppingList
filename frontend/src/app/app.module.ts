@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthorizationPageComponent } from './authorization-page/authorization-page.component';
 import {HttpClientModule} from '@angular/common/http';
+import {MatListModule, MatIconModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,9 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatListModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

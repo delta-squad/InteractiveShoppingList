@@ -10,7 +10,9 @@ export class EnrollmentService {
 
   sendData(userData)
   {
-    return this._http.post<boolean>(this._url, userData);
+    return this._http.post<any>(this._url, userData);
   }
-
+  getAnswer(){
+    return this._http.get<any>(this._url);
+  }
 }
