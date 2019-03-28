@@ -21,7 +21,7 @@
                  formControlName="password" type="password" class="form-control" placeholder="Password">
           <small [class.d-none]="password.valid || password.untouched" class="text-danger">Password is required</small>
         </div>
-        <button (click)="onSubmit()" [disabled]="!loginForm.valid" type="submit" class="btn btn-success btn-block">
+        <button (click)="signIn()" [disabled]="!loginForm.valid" type="submit" class="btn btn-success btn-block">
           Log in
         </button>
       </form>
@@ -74,7 +74,7 @@
           </div>
 
         </div>
-        <button [disabled]="!registrationForm.valid" type="submit" class="btn btn-success btn-block">Register
+        <button (click)="signUp()" [disabled]="!registrationForm.valid" type="submit" class="btn btn-success btn-block">Register
         </button>
       </form>
 
