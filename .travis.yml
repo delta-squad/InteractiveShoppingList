@@ -6,7 +6,8 @@ deploy:
 
 before_install:
  - chmod +x ./gradlew
-
-branches:
-  only:
-  -develop
+deploy:
+  on:
+    branches:
+      only:
+        -develop
