@@ -10,7 +10,10 @@ import {EnrollmentService} from "../enrollment.service";
   styleUrls: ['./authorization-page.component.css']
 })
 export class AuthorizationPageComponent implements OnInit {
-  ngOnInit;
+
+  ngOnInit(){
+
+  };
 
   get userName() {
     return this.loginForm.get('userName');
@@ -50,13 +53,21 @@ export class AuthorizationPageComponent implements OnInit {
   get newConfirmPassword() {
     return this.registrationForm.get('newConfirmPassword');
   }
-
   signIn() {
     this._service.sendData(this.loginForm.value)
       .subscribe(
-        response => console.log(this._router.navigateByUrl('dashboard'), response),
+        response => console.log(alert("You have been successfully singed up! "), response),
         error => console.error('Error', error)
       );
+    this._router.navigateByUrl('dashboard');
+   // this._service.getAnswer()
+   //   .subscribe(
+   //     response => console.log("dane", response)
+   //   );
+      // .subscribe(
+      //   response => console.log(this._router.navigateByUrl('dashboard'), response),
+      //   error => console.error('Error', error)
+      // );
   }
   signUp()
   {
