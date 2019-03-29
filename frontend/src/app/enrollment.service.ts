@@ -12,7 +12,4 @@ export class EnrollmentService {
   {
     return this._http.post<any>(this._url, userData);
   }
-  getAnswer(){
-    return this._http.get<any>(this._url);
-  }
 }
