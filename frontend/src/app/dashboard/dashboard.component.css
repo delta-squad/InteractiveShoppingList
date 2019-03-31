@@ -1,0 +1,27 @@
+
+.navBar {
+  justify-content: space-between;
+}
+
+mat-sidenav-container, mat-sidenav, mat-sidenav-content{
+  height: 90vh;
+}
+
+mat-sidenav, mat-sidenav-content {
+  padding: 16px;
+}
+
+mat-sidenav {
+  background-color: #3F51B5;
+  color: white;
+}
+
+mat-toolbar{
+  height: 10vh;
+}
+
+
+
+.spacer{
+  padding: 10px;
+}

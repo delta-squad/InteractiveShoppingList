@@ -1,1 +1,51 @@
-<button mat-raised-button>Hello world!</button>
+<mat-toolbar color="primary" class="navBar">
+  <div>
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    Interactive Shopping List
+  </div>
+  <div>
+    <span>Home</span>
+    <span class="spacer"></span>
+    <span>About</span>
+    <span class="spacer"></span>
+    <span>Log out</span>
+  </div>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened" role="navigation">
+    <mat-nav-list class="mat-title">
+      <a mat-list-item>
+        <mat-icon>list_alt</mat-icon>
+        Andy's list</a>
+      <a mat-list-item>
+        <mat-icon>list_alt</mat-icon>
+        Saturday shopping list</a>
+      <a mat-list-item>
+        <mat-icon>list_alt</mat-icon>
+        Family list</a>
+      <button mat-mini-fab color="primary">
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-selection-list>
+      <mat-list-option matBadge="3">Bananas</mat-list-option>
+      <mat-list-option matBadge="12">Milk</mat-list-option>
+      <mat-list-option matBadge="9">Bread</mat-list-option>
+      <button mat-fab color="primary" style="float:left">
+        <mat-icon>add</mat-icon>
+      </button>
+      <button mat-fab color="primary" style="float:right">
+        <mat-icon>check</mat-icon>
+      </button>
+    </mat-selection-list>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+
