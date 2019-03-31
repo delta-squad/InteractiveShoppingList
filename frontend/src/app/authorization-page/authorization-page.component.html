@@ -1,46 +1,55 @@
 <div class="container-fluid bg">
   {{loginForm.value | json}}
   {{registrationForm.value | json}}
-<h1 class="mainText">Hello! This is going to be the best online shopping list ever</h1>
+  <mat-toolbar color="primary" class="navBar">
+    <div>
+      Interactive Shopping List
+    </div>
+    <div>
+      <span>Home</span>
+      <span class="spacer"></span>
+      <span>About</span>
+    </div>
+  </mat-toolbar>
   <div class="row">
     <div class="col-md-2 col-sm-4 col-xs-12"></div>
     <div class="col-md-4 col-sm-4 col-xs-12">
-
-      <form [formGroup]="loginForm" class="form-container-sign-in">
-        <h2>Log in</h2><br>
+      <form [formGroup]="loginForm" class="form-container">
+        <span class="mat-display-1">Log in</span>
+        <mat-divider></mat-divider>
         <div class="form-group">
-          <label class="lb">Username</label>
-          <input [class.is-invalid]="userName.invalid && userName.touched"
-                 formControlName="userName" type="text" class="form-control" placeholder="Username">
+          <label class="mat-title">Username</label>
+          <input matInput [class.is-invalid]="userName.invalid && userName.touched"
+                 formControlName="userName" type="text" class="form-control" placeholder="Username"/>
           <small [class.d-none]="userName.valid || userName.untouched" class="text-danger">Username is required
           </small>
         </div>
         <div class="form-group">
-          <label class="lb">Password</label>
+          <label class="mat-title">Password</label>
           <input [class.is-invalid]="password.invalid && password.touched"
-                 formControlName="password" type="password" class="form-control" placeholder="Password">
+                 formControlName="password" type="password" class="form-control" placeholder="Password"/>
           <small [class.d-none]="password.valid || password.untouched" class="text-danger">Password is required</small>
         </div>
-        <button (click)="signIn()" [disabled]="!loginForm.valid" type="submit" class="btn btn-success btn-block">
+        <button mat-raised-button color="primary" (click)="signIn()" [disabled]="!loginForm.valid" type="submit">
           Log in
         </button>
       </form>
-
     </div>
 
     <div class="col-md-4 col-sm-4 col-xs-12">
-      <form [formGroup]="registrationForm" class="form-container-sign-up">
-        <h2>Create new account</h2><br>
+      <form [formGroup]="registrationForm" class="form-container">
+        <span class="mat-display-1">Create new account</span>
+        <mat-divider></mat-divider>
         <div class="form-group">
-          <label class="lb">E-mail</label>
+          <label class="mat-title">E-mail</label>
           <input [class.is-invalid]="newEmail.invalid && newEmail.touched" formControlName="newEmail" type="email"
-                 class="form-control" placeholder="Email">
+                 class="form-control" placeholder="Email"/>
           <small [class.d-none]="newEmail.valid || newEmail.untouched" class="text-danger">E-mail is required</small>
         </div>
         <div class="form-group">
-          <label class="lb">Username</label>
+          <label class="mat-title">Username</label>
           <input [class.is-invalid]="newUserName.invalid && newUserName.touched" formControlName="newUserName"
-                 type="email" class="form-control" placeholder="Username">
+                 type="email" class="form-control" placeholder="Username"/>
           <div *ngIf="newUserName.invalid && newUserName.touched">
             <small *ngIf="newUserName.errors?.required" [class.d-none]="newUserName.valid || newUserName.untouched"
                    class="text-danger">Username is required
@@ -51,9 +60,9 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="lb">Password</label>
+          <label class="mat-title">Password</label>
           <input [class.is-invalid]="newPassword.invalid && newPassword.touched" formControlName="newPassword"
-                 type="password" class="form-control" placeholder="Password">
+                 type="password" class="form-control" placeholder="Password"/>
           <div *ngIf="newPassword.invalid && newPassword.touched">
             <small *ngIf="newPassword.errors?.required" [class.d-none]="newPassword.valid || newPassword.untouched"
                    class="text-danger">Password is required
@@ -64,17 +73,17 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="lb">Confirm password</label>
+          <label class="mat-title">Confirm password</label>
           <input
             [class.is-invalid]="registrationForm.errors?.misMatch || newConfirmPassword.invalid && newConfirmPassword.touched"
-            formControlName="newConfirmPassword" type="password" class="form-control" placeholder="Confirm password">
+            formControlName="newConfirmPassword" type="password" class="form-control" placeholder="Confirm password"/>
           <div *ngIf="registrationForm.errors?.misMatch || newConfirmPassword.invalid && newConfirmPassword.touched">
             <small class="text-danger" *ngIf="newConfirmPassword.errors?.required">You need to confirm password</small>
             <small class="text-danger" *ngIf="registrationForm.errors?.misMatch">Passwords must match</small>
           </div>
-
         </div>
-        <button (click)="signUp()" [disabled]="!registrationForm.valid" type="submit" class="btn btn-success btn-block">Register
+        <button mat-raised-button color="primary" (click)="signUp()" [disabled]="!registrationForm.valid" type="submit">
+          Register
         </button>
       </form>
 
