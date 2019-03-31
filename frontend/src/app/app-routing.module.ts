@@ -1,11 +1,11 @@
-import { NgModule, Component } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {DashboardComponent} from './dashboard/dashboard.component';
 import {AuthorizationPageComponent} from './authorization-page/authorization-page.component'
 
 
 const routes: Routes = [
-  {path :'', component : AuthorizationPageComponent},
+  {path: '', component: AuthorizationPageComponent},
   {path: 'dashboard', component: DashboardComponent}
 ];
 
@@ -13,4 +13,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
