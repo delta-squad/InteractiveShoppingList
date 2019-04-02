@@ -11,6 +11,7 @@
       <span>About</span>
     </div>
   </mat-toolbar>
+
   <div class="row">
     <div class="col-md-2 col-sm-4 col-xs-12"></div>
     <div class="col-md-4 col-sm-4 col-xs-12">
@@ -26,7 +27,7 @@
         </div>
         <div class="form-group">
           <label class="mat-title">Password</label>
-          <input [class.is-invalid]="password.invalid && password.touched"
+          <input matInput [class.is-invalid]="password.invalid && password.touched"
                  formControlName="password" type="password" class="form-control" placeholder="Password"/>
           <small [class.d-none]="password.valid || password.untouched" class="text-danger">Password is required</small>
         </div>
@@ -42,13 +43,13 @@
         <mat-divider></mat-divider>
         <div class="form-group">
           <label class="mat-title">E-mail</label>
-          <input [class.is-invalid]="newEmail.invalid && newEmail.touched" formControlName="newEmail" type="email"
+          <input matInput [class.is-invalid]="newEmail.invalid && newEmail.touched" formControlName="newEmail" type="email"
                  class="form-control" placeholder="Email"/>
           <small [class.d-none]="newEmail.valid || newEmail.untouched" class="text-danger">E-mail is required</small>
         </div>
         <div class="form-group">
           <label class="mat-title">Username</label>
-          <input [class.is-invalid]="newUserName.invalid && newUserName.touched" formControlName="newUserName"
+          <input matInput [class.is-invalid]="newUserName.invalid && newUserName.touched" formControlName="newUserName"
                  type="email" class="form-control" placeholder="Username"/>
           <div *ngIf="newUserName.invalid && newUserName.touched">
             <small *ngIf="newUserName.errors?.required" [class.d-none]="newUserName.valid || newUserName.untouched"
@@ -61,7 +62,7 @@
         </div>
         <div class="form-group">
           <label class="mat-title">Password</label>
-          <input [class.is-invalid]="newPassword.invalid && newPassword.touched" formControlName="newPassword"
+          <input matInput [class.is-invalid]="newPassword.invalid && newPassword.touched" formControlName="newPassword"
                  type="password" class="form-control" placeholder="Password"/>
           <div *ngIf="newPassword.invalid && newPassword.touched">
             <small *ngIf="newPassword.errors?.required" [class.d-none]="newPassword.valid || newPassword.untouched"
@@ -74,7 +75,7 @@
         </div>
         <div class="form-group">
           <label class="mat-title">Confirm password</label>
-          <input
+          <input matInput
             [class.is-invalid]="registrationForm.errors?.misMatch || newConfirmPassword.invalid && newConfirmPassword.touched"
             formControlName="newConfirmPassword" type="password" class="form-control" placeholder="Confirm password"/>
           <div *ngIf="registrationForm.errors?.misMatch || newConfirmPassword.invalid && newConfirmPassword.touched">

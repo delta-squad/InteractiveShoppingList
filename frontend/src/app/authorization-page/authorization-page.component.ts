@@ -57,10 +57,15 @@ export class AuthorizationPageComponent implements OnInit {
   signIn() {
     this._service.sendData(this.loginForm.value)
       .subscribe(
-        response => console.log(alert("You have been successfully singed up! "), response),
+        response => console.log(alert("You have been successfully signed up! "), response),
         error => console.error('Error', error)
       );
-    this._router.navigateByUrl('dashboard');
+    if (this.loginForm.get('userName').value == 'admin' && this.loginForm.get('password').value == 'admin') {
+      this._router.navigateByUrl('admin');
+    } else {
+      this._router.navigateByUrl('dashboard');
+    }
+
     // this._service.getAnswer()
     //   .subscribe(
     //     response => console.log("dane", response)
@@ -74,7 +79,7 @@ export class AuthorizationPageComponent implements OnInit {
   signUp() {
     this._service.sendData(this.registrationForm.value)
       .subscribe(
-        response => console.log(alert("You have been successfully singed up! "), response),
+        response => console.log(alert("You have been successfully signed up! "), response),
         error => console.error('Error', error)
       );
   }

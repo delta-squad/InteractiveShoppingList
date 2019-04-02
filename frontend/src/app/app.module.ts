@@ -9,12 +9,16 @@ import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from "./material/material.module";
 import {FormsModule} from "@angular/forms";
+import {AdminConsoleComponent } from './admin-console/admin-console.component';
+import {EnrollmentService} from "./enrollment.service";
+import {AdminConsoleService} from "./admin-console/admin-console.service";
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    AuthorizationPageComponent
+    AuthorizationPageComponent,
+    AdminConsoleComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +29,7 @@ import {FormsModule} from "@angular/forms";
     MaterialModule,
     FormsModule
   ],
-  providers: [],
+  providers: [EnrollmentService,AdminConsoleService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
