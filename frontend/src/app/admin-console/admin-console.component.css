@@ -1,0 +1,38 @@
+mat-sidenav-container, mat-sidenav, mat-sidenav-content {
+  height: 90vh;
+}
+
+mat-sidenav, mat-sidenav-content {
+  padding: 16px;
+}
+
+mat-sidenav {
+  background-color: #3F51B5;
+  color: white;
+}
+
+.spacer {
+  padding: 10px;
+}
+
+.navBar {
+  justify-content: space-between;
+}
+
+mat-toolbar {
+  height: 10vh;
+}
+
+.navigationWords {
+  padding-left: 100px;
+  padding-right: 30px;
+  font-size: 40px;
+}
+
+.sendFile {
+  border-style: solid;
+}
+
+.buttonSendFile {
+  margin: 10px;
+}
