@@ -7,11 +7,11 @@ import {EnrollmentService} from "../enrollment.service";
 @Component({
   selector: 'app-authorization-page',
   templateUrl: './authorization-page.component.html',
-  styleUrls: ['./authorization-page.component.css']
+  styleUrls: ['./authorization-page.component.css', '../app.component.css']
 })
 export class AuthorizationPageComponent implements OnInit {
 
-  ngOnInit(){
+  ngOnInit() {
 
   };
 
@@ -53,27 +53,33 @@ export class AuthorizationPageComponent implements OnInit {
   get newConfirmPassword() {
     return this.registrationForm.get('newConfirmPassword');
   }
+
   signIn() {
     this._service.sendData(this.loginForm.value)
       .subscribe(
-        response => console.log(alert("You have been successfully singed up! "), response),
+        response => console.log(alert("You have been successfully signed up! "), response),
         error => console.error('Error', error)
       );
-    this._router.navigateByUrl('dashboard');
-   // this._service.getAnswer()
-   //   .subscribe(
-   //     response => console.log("dane", response)
-   //   );
-      // .subscribe(
-      //   response => console.log(this._router.navigateByUrl('dashboard'), response),
-      //   error => console.error('Error', error)
-      // );
+    if (this.loginForm.get('userName').value == 'admin' && this.loginForm.get('password').value == 'admin') {
+      this._router.navigateByUrl('admin');
+    } else {
+      this._router.navigateByUrl('dashboard');
+    }
+
+    // this._service.getAnswer()
+    //   .subscribe(
+    //     response => console.log("dane", response)
+    //   );
+    // .subscribe(
+    //   response => console.log(this._router.navigateByUrl('dashboard'), response),
+    //   error => console.error('Error', error)
+    // );
   }
-  signUp()
-  {
+
+  signUp() {
     this._service.sendData(this.registrationForm.value)
       .subscribe(
-        response => console.log(alert("You have been successfully singed up! "), response),
+        response => console.log(alert("You have been successfully signed up! "), response),
         error => console.error('Error', error)
       );
   }

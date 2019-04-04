@@ -1,0 +1,55 @@
+	[{
+		"id": 0,
+		"name": "Chleb",
+		"category": "Pieczywo"
+	},
+	{
+		"id": 1,
+		"name": "Bułka",
+		"category": "Pieczywo"
+	},
+	{
+		"id": 2,
+		"name": "Bagietka",
+		"category": "Pieczywo"
+	},
+	{
+		"id": 3,
+		"name": "Chleb Tostowy",
+		"category": "Pieczywo"
+	},
+	{
+		"id": 4,
+		"name": "Pączek",
+		"category": "Cukiernicze"
+	},
+	{
+		"id": 5,
+		"name": "Drożdżówka",
+		"category": "Cukiernicze"
+	},
+	{
+		"id": 6,
+		"name": "Rogalik",
+		"category": "Cukiernicze"
+	},
+	{
+		"id": 7,
+		"name": "Mleko",
+		"category": "Nabiał"
+	},
+	{
+		"id": 8,
+		"name": "Masło",
+		"category": "Nabiał"
+	},
+	{
+		"id": 9,
+		"name": "Chipsy",
+		"category": "Przekąski"
+	},
+	{
+		"id": 10,
+		"name": "Paluszki",
+		"category": "Przekąski"
+	}]

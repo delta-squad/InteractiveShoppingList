@@ -1,0 +1,21 @@
+<mat-toolbar color="primary" class="navBar">
+  <div class="navigationWords">
+    Admin Console
+  </div>
+  <div>
+    <span class="navigationWords">Home</span>
+  </div>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened" role="navigation">
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="sendFile"><h1>Click and send new json file to database</h1>
+      <button class="buttonSendFile" mat-raised-button color="primary" (click)="onSubmit()">Load</button>
+      <button class="buttonSendFile" mat-raised-button color="primary" (click)="printLog()">Show Log</button>
+      <button class="buttonSendFile" mat-raised-button color="primary" (click)="sendProducts()">Send to DB</button>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
