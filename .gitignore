@@ -29,4 +29,12 @@
 
 ### User-defined ###
 gradle.properties
-**/build
+.gradle\
+build\
+.gradle\
+build\
+dist\
+node_modules\
+build\
+build\
+out\

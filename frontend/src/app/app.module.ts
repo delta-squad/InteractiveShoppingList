@@ -12,13 +12,16 @@ import {FormsModule} from "@angular/forms";
 import {AdminConsoleComponent } from './admin-console/admin-console.component';
 import {EnrollmentService} from "./enrollment.service";
 import {AdminConsoleService} from "./admin-console/admin-console.service";
-
+import { DialogWindowComponent } from './dialog-window/dialog-window.component';
+import {MatIconModule} from "@angular/material";
+import { MatCheckboxModule } from '@angular/material/checkbox';
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     AuthorizationPageComponent,
-    AdminConsoleComponent
+    AdminConsoleComponent,
+    DialogWindowComponent
   ],
   imports: [
     BrowserModule,
@@ -27,10 +30,15 @@ import {AdminConsoleService} from "./admin-console/admin-console.service";
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    MatIconModule,MatCheckboxModule
+
   ],
   providers: [EnrollmentService,AdminConsoleService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+    MaterialModule
+  ]
 })
 export class AppModule {
 }

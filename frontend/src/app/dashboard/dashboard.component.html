@@ -30,22 +30,53 @@
       </button>
     </mat-nav-list>
   </mat-sidenav>
-
   <mat-sidenav-content>
-    <mat-selection-list>
-      <mat-list-option matBadge="3">Bananas</mat-list-option>
-      <mat-list-option matBadge="12">Milk</mat-list-option>
-      <mat-list-option matBadge="9">Bread</mat-list-option>
-      <button mat-fab color="primary" style="float:left">
-        <mat-icon>add</mat-icon>
-      </button>
-      <button mat-fab color="primary" style="float:right">
-        <mat-icon>check</mat-icon>
-      </button>
-    </mat-selection-list>
+    <!--<mat-selection-list >-->
+      <!--<mat-list-option matBadge="3" >Bananas</mat-list-option>-->
+      <!--<mat-list-option matBadge="12">Milk</mat-list-option>-->
+      <!--<mat-list-option matBadge="9">Bread</mat-list-option>-->
+      <!--<button  mat-fab color="primary" style="float:left">-->
+        <!--<mat-icon>add</mat-icon>-->
+      <!--</button>-->
+      <!--<button mat-fab color="primary" style="float:right">-->
+        <!--<mat-icon>check</mat-icon>-->
+      <!--</button>-->
+    <!--</mat-selection-list>-->
+    <mat-card class="todoapp">
+      <mat-card-content *ngIf="todoList.length">
+        <mat-selection-list >
+
+            <mat-list-item  *ngFor="let todo of todoList; let index=index" class="list-item">
+
+              <button mat-fab (click)="remove(index)" color="primary" style="float:right">
+                <mat-icon >delete_forever</mat-icon>
+              </button>
+
+              <button mat-fab (click)="todoDialog(todo)" color="primary"
+                      [disabled]="todo.completed" style="float:right">
+                <mat-icon>mode_edit</mat-icon>
+              </button>
+
+              <mat-checkbox style="padding-left:15px" color="primary" type="checkbox" [name]="'item'+index" [(ngModel)]="todo.completed" >
+                <span [class.completed]="todo.completed">{{todo.title}}</span>
+              </mat-checkbox>
+            </mat-list-item>
+
+        </mat-selection-list >
+      </mat-card-content>
+    </mat-card>
+    <br>
+    <button mat-fab color="primary" style="float:left" (click)="todoDialog()">
+      <mat-icon>add</mat-icon>
+    </button>
+
+    <app-dialog-window  [title]="'Nowy Zakup'"
+                        [template]="'Wpisz co chcesz kupić:'"
+                        [placeholder]="'Co chcesz kupić?'"
+                        [okText]="okButtonText"
+                        [value]="fieldValue"
+                        (valueEmitted)="updateTodo($event)"
+                        [showPrompt]="showDialog">
+    </app-dialog-window>
   </mat-sidenav-content>
 </mat-sidenav-container>
-
-
-
-
