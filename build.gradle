@@ -50,7 +50,14 @@ springBoot {
 
 task stage(type: Copy, dependsOn: [clean, build]) {
 doLast{
-	println "jar built to " + tasks.jar.archivePath
+def correctPath = new File("build/libs/eventServer.jar").absolutePath
+if (!correctPath.equals(tasks.jar.archivePath.toString())) {
+      // At heroku jar is placed in tmp.
+      copy {
+        from tasks.jar.archivePath
+        into 'build/libs'
+        rename { 'eventServer.jar' }
+      }
 }
     from jar.archivePath
     into project.rootDir
