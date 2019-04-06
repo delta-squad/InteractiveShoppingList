@@ -54,10 +54,6 @@ task stage(type: Copy, dependsOn: [clean, build]) {
     rename {
         'InteractiveShoppingList.jar'
     }
-    doLast{
-println "jar built to " + tasks.jar.archivePath
-
-}
 }
 stage.mustRunAfter(clean)
 
