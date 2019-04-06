@@ -49,6 +49,9 @@ springBoot {
 }
 
 task stage(type: Copy, dependsOn: [clean, build]) {
+doLast{
+	println "jar built to " + tasks.jar.archivePath
+}
     from jar.archivePath
     into project.rootDir
     rename {
