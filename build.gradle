@@ -49,21 +49,15 @@ springBoot {
 }
 
 task stage(type: Copy, dependsOn: [clean, build]) {
-doLast{
-def correctPath = new File("build/libs/eventServer.jar").absolutePath
-if (!correctPath.equals(tasks.jar.archivePath.toString())) {
-      // At heroku jar is placed in tmp.
-      copy {
-        from tasks.jar.archivePath
-        into 'build/libs'
-        rename { 'eventServer.jar' }
-      }
-}
     from jar.archivePath
     into project.rootDir
     rename {
         'InteractiveShoppingList.jar'
     }
+    doLast{
+println "jar built to " + tasks.jar.archivePath
+
+}
 }
 stage.mustRunAfter(clean)
 
