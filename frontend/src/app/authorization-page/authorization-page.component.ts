@@ -55,6 +55,7 @@ export class AuthorizationPageComponent implements OnInit {
   }
 
   signIn() {
+    console.log(this.loginForm.value);
     this._service.sendData(this.loginForm.value)
       .subscribe(
         response => console.log(alert("You have been successfully signed up! "), response),
