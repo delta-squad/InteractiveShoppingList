@@ -5,21 +5,21 @@ import {Component} from '@angular/core';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css', '../app.component.css']
 })
-export class DashboardComponent  {
+export class DashboardComponent {
   opened = true;
   showDialog = false;
   editingTodo: any = null;
   fieldValue = '';
   todoList: any = [];
-  okButtonText = 'Dodaj';
+  okButtonText = 'Add';
 
   todoDialog(todo = null) {
-    this.okButtonText = 'Dodaj';
+    this.okButtonText = 'Add';
     this.fieldValue = '';
     this.editingTodo = todo;
     if (todo) {
       this.fieldValue = todo.title;
-      this.okButtonText = 'Edytuj';
+      this.okButtonText = 'Edit';
     }
     this.showDialog = true;
   }
