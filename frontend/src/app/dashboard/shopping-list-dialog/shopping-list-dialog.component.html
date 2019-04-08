@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>
+  <span *ngIf="!editTitleMode">{{title}}</span>
+  <span *ngIf="editTitleMode">
+        <input matInput placeholder="Shopping list title" [(ngModel)]="title">
+        <button mat-icon-button color="primary" (click)="saveTitle(title); editTitleMode = false">
+          <mat-icon>check</mat-icon>
+        </button>
+  </span>
+
+  <button mat-icon-button color="primary" *ngIf="!editTitleMode" (click)="editTitleMode = true">
+    <mat-icon>edit</mat-icon>
+  </button>
+  <mat-divider></mat-divider>
+</h2>
+
+<mat-dialog-content>
+  <mat-selection-list>
+    <mat-list-option *ngFor="let product of currentShoppingList; let index=index">
+      <div>
+        {{product}}
+        <button mat-icon-button (click)="removeProductAt(index)" color="primary">
+          <mat-icon>delete</mat-icon>
+        </button>
+          <mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
+          <mat-datepicker #myDatepicker></mat-datepicker>
+        <span class="spacer"></span>
+      </div>
+      <mat-divider></mat-divider>
+    </mat-list-option>
+  </mat-selection-list>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-mini-fab color="primary" (click)="save()">
+    <mat-icon>check</mat-icon>
+  </button>
+</mat-dialog-actions>

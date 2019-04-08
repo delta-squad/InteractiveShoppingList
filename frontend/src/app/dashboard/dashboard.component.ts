@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {MatDialog} from "@angular/material";
+import {ShoppingListDialogComponent} from "./shopping-list-dialog/shopping-list-dialog.component";
 
 @Component({
   selector: 'app-dashboard',
@@ -6,53 +8,21 @@ import {Component} from '@angular/core';
   styleUrls: ['./dashboard.component.css', '../app.component.css']
 })
 export class DashboardComponent {
-  opened = true;
-  showDialog = false;
-  editingTodo: any = null;
-  fieldValue = '';
-  todoList: any = [];
-  okButtonText = 'Add';
 
-  todoDialog(todo = null) {
-    this.okButtonText = 'Add';
-    this.fieldValue = '';
-    this.editingTodo = todo;
-    if (todo) {
-      this.fieldValue = todo.title;
-      this.okButtonText = 'Edit';
-    }
-    this.showDialog = true;
+  shoppingList: any = ["Bread", "Eggs", "Juice"];
+
+  constructor(public dialog: MatDialog) {
   }
 
-  remove(index: number) {
-    this.todoList.splice(index, 1);
-  }
-
-  editTodo(title) {
-    this.editingTodo.title = title;
-  }
-
-  updateTodo(title) {
-    if (title) {
-      title = title.trim();
-      if (this.editingTodo) {
-        this.editTodo(title);
-      } else {
-        this.addTodo(title);
+  openDialog(): void {
+    let dialogRef = this.dialog.open(ShoppingListDialogComponent, {
+      data: {
+        shoppingList: this.shoppingList
       }
-    }
-    this.hideDialog();
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.shoppingList = result;
+    });
   }
-
-  addTodo(title) {
-    const todo = {title: title, completed: false};
-    this.todoList.push(todo);
-  }
-
-  hideDialog() {
-    this.showDialog = false;
-    this.editingTodo = null;
-    this.fieldValue = null; // make sure Input is new
-  }
-
 }

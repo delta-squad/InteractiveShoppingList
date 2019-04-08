@@ -11,7 +11,12 @@ import {
   MatListModule,
   MatDividerModule,
   MatInputModule,
-  MatCardModule
+  MatCardModule,
+  MatDialogModule,
+  MatCheckboxModule,
+  MatRippleModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from '@angular/material';
 
 const MaterialComponents = [
@@ -26,7 +31,12 @@ const MaterialComponents = [
   MatListModule,
   MatDividerModule,
   MatInputModule,
-  MatCardModule
+  MatCardModule,
+  MatDialogModule,
+  MatCheckboxModule,
+  MatRippleModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 ];
 
 @NgModule({
