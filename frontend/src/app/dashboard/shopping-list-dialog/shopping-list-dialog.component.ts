@@ -1,5 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
+import {Product} from "../../interfaces/product";
+import {ShoppingList} from "../../interfaces/shoppingList";
 
 @Component({
   selector: 'app-shopping-list-dialog',
@@ -8,25 +10,30 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 })
 export class ShoppingListDialogComponent implements OnInit {
 
-  currentShoppingList: Array<String> = [];
+  shoppingList: ShoppingList;
+  shoppingListProducts: Array<Product> = [];
   editTitleMode: boolean = false;
-  title: String = "List title!";
+  title: String = "";
 
   constructor(public dialogRef: MatDialogRef<ShoppingListDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) {
-    this.currentShoppingList = this.data.shoppingList;
+    this.shoppingList = this.data.shoppingList;
+    this.shoppingListProducts = this.data.shoppingList.products;
+    this.title = this.data.shoppingList.title;
     dialogRef.disableClose = true;
   }
 
   ngOnInit() {
+    console.log(this.data.shoppingList);
+    console.log(this.data);
   }
 
   removeProductAt(index: number) {
-    this.currentShoppingList.splice(index, 1);
+    this.shoppingListProducts.splice(index, 1);
   }
 
   save() {
-    this.dialogRef.close(this.currentShoppingList);
+    this.dialogRef.close(this.shoppingListProducts);
   }
 
   saveTitle(title: String) {

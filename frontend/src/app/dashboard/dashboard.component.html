@@ -13,17 +13,20 @@
 <!-- or none and create a new one that is assigned to the card-->
 <!--TODO: card generation-->
 <!--TODO: "shortened" version of list on main dashboard, whole list after opening dialog-->
-<mat-card class="listCard" (click)="openDialog()" matRipple>
-  <mat-card-content>
-    <mat-list>
-      <mat-list-item *ngFor="let todo of shoppingList">
-        {{todo}}
-        <mat-divider></mat-divider>
-      </mat-list-item>
-    </mat-list>
-  </mat-card-content>
-</mat-card>
-
+<mat-grid-list cols="2" rowHeight="2:1">
+  <mat-grid-tile *ngFor="let list of shoppingLists">
+    <mat-card class="listCard" (click)="openDialog(list)" matRipple>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item *ngFor="let product of list.products">
+            {{product.name}}
+            <mat-divider></mat-divider>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
 <button mat-fab color="primary" (click)="openDialog()">
   <mat-icon>add</mat-icon>
 </button>

@@ -9,6 +9,6 @@
 }
 
 .listCard {
-  width: 25%;
-  height: 30vh;
+  width: calc(100% - 70px);
+  height: calc(100% - 70px);
 }
