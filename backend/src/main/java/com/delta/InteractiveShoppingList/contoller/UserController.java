@@ -10,35 +10,28 @@ import java.security.Principal;
 import java.util.Base64;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RequestMapping("")
 public class UserController {
 
     @Autowired
     UserService userService;
 
-    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Principal login(@RequestBody UserDTO userDTO, HttpServletRequest request) {
-
-        if (userDTO.getUserName().equals("user") && userDTO.getPassword().equals("password")){
+        if (userService.isUserDataIsCorrect(userDTO.getUserName(), userDTO.getPassword())) {
             String authToken = request.getHeader("Authorization")
                     .substring("Basic".length()).trim();
             return () -> new String(Base64.getDecoder()
                     .decode(authToken)).split(":")[0];
 
-        }
-        else {
+        } else {
             return null;
         }
     }
 
-    @RequestMapping("/user")
-    public Principal user(HttpServletRequest request) {
-        String authToken = request.getHeader("Authorization")
-                .substring("Basic".length()).trim();
-        return () -> new String(Base64.getDecoder()
-                .decode(authToken)).split(":")[0];
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public boolean register(@RequestBody UserDTO userDTO){
+        return userService.registerUser(userDTO);
     }
-
 }

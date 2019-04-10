@@ -26,7 +26,7 @@ public class BasicAuthConfiguration
             throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/login").permitAll()
+                .antMatchers("/isUserDataIsCorrect").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
