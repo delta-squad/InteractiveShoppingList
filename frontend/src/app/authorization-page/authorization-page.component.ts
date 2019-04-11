@@ -73,6 +73,15 @@ export class AuthorizationPageComponent implements OnInit {
 
     });
   }
+  register() {
+    let url = 'http://localhost:8082/login';
+    let result = this.http.post<Observable<boolean>>(url, {
+      newEmailToSend: this.registrationForm.get('newEmail').value,
+      newNameToSend: this.registrationForm.get('newUserName').value,
+      newPasswordToSend: this.registrationForm.get('newPassword').value
+    }).subscribe();
+  }
+
   signIn() {
     console.log(this.loginForm.value);
     this.service.sendData(this.loginForm.value)

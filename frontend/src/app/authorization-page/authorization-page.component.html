@@ -83,7 +83,7 @@
             <small class="text-danger" *ngIf="registrationForm.errors?.misMatch">Passwords must match</small>
           </div>
         </div>
-        <button mat-raised-button color="primary" (click)="signUp()" [disabled]="!registrationForm.valid" type="submit">
+        <button mat-raised-button color="primary" (click)="register()" [disabled]="!registrationForm.valid" type="submit">
           Register
         </button>
       </form>
