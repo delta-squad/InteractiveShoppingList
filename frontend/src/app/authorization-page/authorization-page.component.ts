@@ -56,10 +56,10 @@ export class AuthorizationPageComponent implements OnInit {
     return this.registrationForm.get('newConfirmPassword');
   }
   login() {
-    let url = 'http://localhost:8082/login';
+    let url = 'http://localhost:8080/login';
     let result = this.http.post<Observable<boolean>>(url, {
-      name: this.loginForm.get('userName').value,
-      pass: this.loginForm.get('password').value
+      userName: this.loginForm.get('userName').value,
+      password: this.loginForm.get('password').value
     }).subscribe(isValid => {
       if (isValid) {
         sessionStorage.setItem(
@@ -74,11 +74,11 @@ export class AuthorizationPageComponent implements OnInit {
     });
   }
   register() {
-    let url = 'http://localhost:8082/login';
+    let url = 'http://localhost:8080/register';
     let result = this.http.post<Observable<boolean>>(url, {
-      newEmailToSend: this.registrationForm.get('newEmail').value,
-      newNameToSend: this.registrationForm.get('newUserName').value,
-      newPasswordToSend: this.registrationForm.get('newPassword').value
+      emailAddress: this.registrationForm.get('newEmail').value,
+      userName: this.registrationForm.get('newUserName').value,
+      password: this.registrationForm.get('newPassword').value
     }).subscribe();
   }
 

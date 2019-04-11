@@ -17,6 +17,8 @@ public class UserController {
     @Autowired
     UserService userService;
 
+
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Principal login(@RequestBody UserDTO userDTO, HttpServletRequest request) {
         if (userService.isUserDataIsCorrect(userDTO.getUserName(), userDTO.getPassword())) {
@@ -30,6 +32,7 @@ public class UserController {
         }
     }
 
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public boolean register(@RequestBody UserDTO userDTO){
         return userService.registerUser(userDTO);
