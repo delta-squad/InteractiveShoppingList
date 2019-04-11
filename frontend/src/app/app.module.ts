@@ -15,6 +15,7 @@ import {AdminConsoleService} from "./admin-console/admin-console.service";
 import { DialogWindowComponent } from './dialog-window/dialog-window.component';
 import {MatIconModule} from "@angular/material";
 import { MatCheckboxModule } from '@angular/material/checkbox';
+
 @NgModule({
   declarations: [
     AppComponent,

@@ -31,7 +31,7 @@
                  formControlName="password" type="password" class="form-control" placeholder="Password"/>
           <small [class.d-none]="password.valid || password.untouched" class="text-danger">Password is required</small>
         </div>
-        <button mat-raised-button color="primary" (click)="signIn()" [disabled]="!loginForm.valid" type="submit">
+        <button mat-raised-button color="primary" (click)="login()" [disabled]="!loginForm.valid" type="submit">
           Log in
         </button>
       </form>

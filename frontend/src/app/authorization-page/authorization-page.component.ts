@@ -1,8 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {PasswordValidator} from './shared/password.validator';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {EnrollmentService} from "../enrollment.service";
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-authorization-page',
@@ -12,7 +14,7 @@ import {EnrollmentService} from "../enrollment.service";
 export class AuthorizationPageComponent implements OnInit {
 
   ngOnInit() {
-
+    sessionStorage.setItem('token', ''); // co to do chu
   };
 
   get userName() {
@@ -23,7 +25,7 @@ export class AuthorizationPageComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
-  constructor(private fb: FormBuilder, private _router: Router, private _service: EnrollmentService) {
+  constructor(private fb: FormBuilder,private route: ActivatedRoute, private router: Router,private http: HttpClient, private service: EnrollmentService) {
   }
 
   loginForm = this.fb.group({
@@ -53,32 +55,49 @@ export class AuthorizationPageComponent implements OnInit {
   get newConfirmPassword() {
     return this.registrationForm.get('newConfirmPassword');
   }
+  login() {
+    let url = 'http://localhost:8082/login';
+    let result = this.http.post<Observable<boolean>>(url, {
+      name: this.loginForm.get('userName').value,
+      pass: this.loginForm.get('password').value
+    }).subscribe(isValid => {
+      if (isValid) {
+        sessionStorage.setItem(
+          'token',
+          btoa(this.loginForm.get('userName').value + ':' + this.loginForm.get('password').value)
+        );
+        this.router.navigateByUrl('dashboard');
+      } else {
+        alert("Authentication failed")
+      }
 
+    });
+  }
   signIn() {
     console.log(this.loginForm.value);
-    this._service.sendData(this.loginForm.value)
+    this.service.sendData(this.loginForm.value)
       .subscribe(
         response => console.log(alert("You have been successfully signed up! "), response),
         error => console.error('Error', error)
       );
     if (this.loginForm.get('userName').value == 'admin' && this.loginForm.get('password').value == 'admin') {
-      this._router.navigateByUrl('admin');
+      this.router.navigateByUrl('admin');
     } else {
-      this._router.navigateByUrl('dashboard');
+      this.router.navigateByUrl('dashboard');
     }
 
-    // this._service.getAnswer()
+    // this.service.getAnswer()
     //   .subscribe(
     //     response => console.log("dane", response)
     //   );
     // .subscribe(
-    //   response => console.log(this._router.navigateByUrl('dashboard'), response),
+    //   response => console.log(this.router.navigateByUrl('dashboard'), response),
     //   error => console.error('Error', error)
     // );
   }
 
   signUp() {
-    this._service.sendData(this.registrationForm.value)
+    this.service.sendData(this.registrationForm.value)
       .subscribe(
         response => console.log(alert("You have been successfully signed up! "), response),
         error => console.error('Error', error)
