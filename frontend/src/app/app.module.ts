@@ -14,6 +14,7 @@ import {EnrollmentService} from "./enrollment.service";
 import {AdminConsoleService} from "./admin-console/admin-console.service";
 import {DialogWindowComponent} from './dialog-window/dialog-window.component';
 import {ShoppingListDialogComponent} from './dashboard/shopping-list-dialog/shopping-list-dialog.component';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import {ShoppingListDialogComponent} from './dashboard/shopping-list-dialog/shop
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
+    FlexLayoutModule,
   ],
   entryComponents: [
     ShoppingListDialogComponent

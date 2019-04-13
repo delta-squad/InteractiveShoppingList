@@ -20,24 +20,35 @@ export class DashboardComponent {
   product6: Product = {id: 6, name: "Vodka", category: "Category"};
 
   shoppingLists: Array<ShoppingList> = [
-    {id: 1, title: 'First shopping list', products: [this.product1, this.product2, this.product3]},
+    {id: 1, title: 'First shopping list', products: [this.product1, this.product2, this.product3, this.product4, this.product5]},
     {id: 2, title: 'Second shopping list', products: [this.product3, this.product4, this.product5]},
-    {id: 3, title: 'Another shopping list', products: [this.product1, this.product4, this.product6]},
+    {id: 3, title: 'Another shopping list', products: [this.product1, this.product4, this.product6, this.product5]},
     {id: 4, title: 'Saturday shopping list', products: [this.product2, this.product5, this.product1]},
+    {id: 5, title: 'Shopping list no 5', products: [this.product3, this.product1, this.product6]},
   ];
 
   constructor(public dialog: MatDialog) {
   }
 
   openDialog(list: ShoppingList): void {
+    //TODO: if list is not here, then we have to create a new one
     let dialogRef = this.dialog.open(ShoppingListDialogComponent, {
       data: {
         shoppingList: list
-      }
+      },
+      autoFocus: false,
+      height: '90vh',
+      width: '60%'
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      //TODO: Replace list in current array with list from result
+      if (result != undefined) {
+        let index = this.shoppingLists.indexOf(list);
+
+        if (index !== -1) {
+          this.shoppingLists[index] = result;
+        }
+      }
     });
+
   }
 }

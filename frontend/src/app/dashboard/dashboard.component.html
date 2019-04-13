@@ -1,33 +1,65 @@
 <mat-toolbar color="primary" class="navBar">
   Interactive Shopping List
-  <div>
+  <div fxShow="true" fxHide.lt-md="true">
     <span>Home</span>
     <span class="spacer"></span>
     <span>About</span>
     <span class="spacer"></span>
     <span>Log out</span>
   </div>
+  <div fxShow="true" fxHide.gt-sm="true">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
 </mat-toolbar>
 
-<!--TODO: create overloaded openDialog method that can take "current" list as a parameter-->
-<!-- or none and create a new one that is assigned to the card-->
-<!--TODO: card generation-->
-<!--TODO: "shortened" version of list on main dashboard, whole list after opening dialog-->
-<mat-grid-list cols="2" rowHeight="2:1">
-  <mat-grid-tile *ngFor="let list of shoppingLists">
-    <mat-card class="listCard" (click)="openDialog(list)" matRipple>
-      <mat-card-content>
-        <mat-list>
-          <mat-list-item *ngFor="let product of list.products">
-            {{product.name}}
+<mat-sidenav-container class="content-container">
+  <mat-sidenav #sidenav fxLayout="column" class="content-container">
+    <div fxLayout="column">
+      <span>Home</span>
+      <span class="spacer"></span>
+      <span>About</span>
+      <span class="spacer"></span>
+      <span>Log out</span>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="content-container">
+    <!--TODO: create overloaded openDialog method that can take "current" list as a parameter-->
+    <!-- or none and create a new one that is assigned to the card-->
+    <mat-grid-list cols="3">
+      <mat-grid-tile *ngFor="let list of shoppingLists">
+        <mat-card class="listCard" (click)="openDialog(list)" matRipple>
+          <mat-card-title>{{list.title}}
             <mat-divider></mat-divider>
-          </mat-list-item>
-        </mat-list>
-      </mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
-<button mat-fab color="primary" (click)="openDialog()">
-  <mat-icon>add</mat-icon>
-</button>
+          </mat-card-title>
+          <mat-card-content>
+            <mat-list>
+              <mat-list-item *ngFor="let product of list.products let i = index">
+                <div *ngIf="i<4">
+                  {{product.name}}
+                  <mat-divider></mat-divider>
+                </div>
+                <div *ngIf="i==4">
+                  ...
+                </div>
+              </mat-list-item>
+            </mat-list>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-card class="listCard" (click)="openDialog()" matRipple>
+          <mat-card-content class="newListContent">
+            <button mat-fab color="primary">
+              <mat-icon>add</mat-icon>
+            </button>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
 

@@ -10,5 +10,16 @@
 
 .listCard {
   width: calc(100% - 70px);
-  height: calc(100% - 70px);
+  height: calc(100% - 90px);
+}
+
+.newListContent {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-container {
+  height: 90vh;
 }
