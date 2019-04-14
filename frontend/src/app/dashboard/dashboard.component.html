@@ -28,7 +28,7 @@
   <mat-sidenav-content class="content-container">
     <!--TODO: create overloaded openDialog method that can take "current" list as a parameter-->
     <!-- or none and create a new one that is assigned to the card-->
-    <mat-grid-list cols="3">
+    <mat-grid-list [cols]="columnsNumber" (window:resize)="onResize($event)">
       <mat-grid-tile *ngFor="let list of shoppingLists">
         <mat-card class="listCard" (click)="openDialog(list)" matRipple>
           <mat-card-title>{{list.title}}

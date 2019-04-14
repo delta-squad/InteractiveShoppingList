@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material";
 import {ShoppingListDialogComponent} from "./shopping-list-dialog/shopping-list-dialog.component";
 import {ShoppingList} from "../interfaces/shoppingList";
@@ -10,7 +10,11 @@ import {Product} from "../interfaces/product";
   styleUrls: ['./dashboard.component.css', '../app.component.css']
 })
 
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
+
+  columnsNumber: number;
+  bigScreenSize: number = 850;
+  mediumScreenSize: number = 550;
 
   product1: Product = {id: 1, name: "Eggs", category: "Category"};
   product2: Product = {id: 2, name: "Bread", category: "Category"};
@@ -20,7 +24,7 @@ export class DashboardComponent {
   product6: Product = {id: 6, name: "Vodka", category: "Category"};
 
   shoppingLists: Array<ShoppingList> = [
-    {id: 1, title: 'First shopping list', products: [this.product1, this.product2, this.product3, this.product4, this.product5]},
+    {id: 1, title: 'First list', products: [this.product1, this.product2, this.product3, this.product4, this.product5]},
     {id: 2, title: 'Second shopping list', products: [this.product3, this.product4, this.product5]},
     {id: 3, title: 'Another shopping list', products: [this.product1, this.product4, this.product6, this.product5]},
     {id: 4, title: 'Saturday shopping list', products: [this.product2, this.product5, this.product1]},
@@ -36,7 +40,7 @@ export class DashboardComponent {
       data: {
         shoppingList: list
       },
-      autoFocus: false,
+      autoFocus: list == undefined,
       height: '90vh',
       width: '60%'
     });
@@ -46,9 +50,30 @@ export class DashboardComponent {
 
         if (index !== -1) {
           this.shoppingLists[index] = result;
+        } else {
+          this.shoppingLists.push(result);
         }
       }
     });
+  }
 
+  ngOnInit() {
+    this.calculateColumnsNumber();
+  }
+
+  private calculateColumnsNumber() {
+    if (window.innerWidth > this.bigScreenSize) {
+      this.columnsNumber = 3;
+    } else if (window.innerWidth <= this.bigScreenSize && window.innerWidth > this.mediumScreenSize) {
+      this.columnsNumber = 2;
+    } else this.columnsNumber = 1;
+  }
+
+  onResize(event) {
+    if (event.target.innerWidth > this.bigScreenSize) {
+      this.columnsNumber = 3;
+    } else if (event.target.innerWidth <= this.bigScreenSize && event.target.innerWidth > this.mediumScreenSize) {
+      this.columnsNumber = 2;
+    } else this.columnsNumber = 1;
   }
 }

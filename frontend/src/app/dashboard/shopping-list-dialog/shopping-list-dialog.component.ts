@@ -16,14 +16,27 @@ export class ShoppingListDialogComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<ShoppingListDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) {
-    this.shoppingList = this.data.shoppingList;
-    //pass by value workaround to store old products state
-    this.oldProducts = this.data.shoppingList.products.slice(0);
-    this.oldTitle = this.data.shoppingList.title;
-    this.editTitleMode = false;
+    this.evaluateShoppingList();
+    this.editTitleMode = this.shoppingList.title == undefined;
     dialogRef.backdropClick().subscribe(() => {
       this.saveOnClose()
     })
+  }
+
+  private evaluateShoppingList() {
+    if (this.data.shoppingList != undefined) {
+      this.saveListValues();
+    } else {
+      this.shoppingList = <ShoppingList>{};
+    }
+  }
+
+  private saveListValues() {
+    this.shoppingList = this.data.shoppingList;
+    //pass by value workaround to store old products state
+    this.oldTitle = this.data.shoppingList.title;
+    if (this.data.shoppingList.products != undefined)
+      this.oldProducts = this.data.shoppingList.products.slice(0);
   }
 
   ngOnInit() {
@@ -34,7 +47,9 @@ export class ShoppingListDialogComponent implements OnInit {
   }
 
   saveOnClose() {
-    this.dialogRef.close(this.shoppingList);
+    if (this.shoppingList.title != undefined) {
+      this.dialogRef.close(this.shoppingList);
+    }
   }
 
   discardChanges() {
