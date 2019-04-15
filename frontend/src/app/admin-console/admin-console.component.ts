@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {IProducts} from "../interfaces/products";
+import {Product} from "../interfaces/product";
 import {Observable} from "rxjs";
 import {EnrollmentService} from "../enrollment.service";
 import {AdminConsoleService} from "./admin-console.service";
