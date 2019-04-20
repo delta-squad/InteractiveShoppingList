@@ -1,5 +1,4 @@
 .gradle
-/build/
 !gradle/wrapper/gradle-wrapper.jar
 
 ### STS ###
@@ -27,3 +26,15 @@
 
 ### VS Code ###
 .vscode/
+
+### User-defined ###
+gradle.properties
+.gradle/
+build/
+.gradle/
+build/
+dist/
+node_modules/
+build/
+build/
+out/
