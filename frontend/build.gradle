@@ -1,20 +1,19 @@
-
 plugins {
-  id 'java'
   id "com.moowork.node" version "1.2.0"
 }
 
+version '0.0.1'
 
 node {
-  version = '9.2.0'
+  version = '10.15.0'
   npmVersion = '6.4.1'
   download = true
+  workDir = file("${project.buildDir}/node")
+  nodeModulesDir = file("${project.projectDir}")
 }
 
-
-jar.dependsOn 'npm_run_build'
-
-
-jar {
-  from 'dist/frontend' into 'static'
+task build(type: NpmTask) {
+  args = ['run', 'build']
 }
+
+build.dependsOn(npm_install)
