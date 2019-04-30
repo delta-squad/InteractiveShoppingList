@@ -47,6 +47,13 @@ bootJar {
         into 'static'
     }
 }
-
+//springBoot {
+//    mainClass = "com.delta.InteractiveShoppingList"
+//}
+bootJar {
+    manifest {
+        attributes 'Start-Class': 'com.delta.InteractiveShoppingList'
+    }
+}
 //frontend:build will be run before the processResources
 processResources.dependsOn('frontend:build')
