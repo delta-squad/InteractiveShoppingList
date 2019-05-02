@@ -1,3 +1,7 @@
-.titleInput{
-  width: 80%;
+.wideInput{
+  width: 95%;
+}
+
+.dialogContent{
+  height: 65vh;
 }

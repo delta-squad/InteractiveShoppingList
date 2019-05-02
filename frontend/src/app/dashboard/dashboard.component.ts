@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
   bigScreenSize: number = 850;
   mediumScreenSize: number = 550;
 
-  product1: Product = {id: 1, name: "Eggs", category: "Category"};
+  product1: Product = {id: 1, name: "Egg", category: "Category"};
   product2: Product = {id: 2, name: "Bread", category: "Category"};
   product3: Product = {id: 3, name: "Juice", category: "Category"};
   product4: Product = {id: 4, name: "Beer", category: "Category"};
@@ -35,7 +35,6 @@ export class DashboardComponent implements OnInit {
   }
 
   openDialog(list: ShoppingList): void {
-    //TODO: if list is not here, then we have to create a new one
     let dialogRef = this.dialog.open(ShoppingListDialogComponent, {
       data: {
         shoppingList: list

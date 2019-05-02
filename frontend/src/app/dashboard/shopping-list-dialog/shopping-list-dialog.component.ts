@@ -62,6 +62,11 @@ export class ShoppingListDialogComponent implements OnInit {
     this.shoppingList.title = title;
   }
 
+  addProduct(productName: string) {
+    if (productName != undefined)
+      this.shoppingList.products.push(<Product>{name: productName})
+  }
+
   @HostListener('window:keyup.esc') onKeyUp() {
     this.saveOnClose();
   }
