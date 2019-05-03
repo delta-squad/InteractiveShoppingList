@@ -17,11 +17,28 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @RequestMapping("/login")
+    public boolean login(@RequestBody UserDTO userDto) {
+        return
+                (userService.isUserDataIsCorrect(userDto.getUserName(), userDto.getPassword()));
+//                user.getUserName().equals("user") && user.getPassword().equals("password");
+    }
 
-    @CrossOrigin(origins = "*")
+    @RequestMapping("/user")
+    public Principal user(HttpServletRequest request) {
+        String authToken = request.getHeader("Authorization")
+                .substring("Basic".length()).trim();
+        return () -> new String(Base64.getDecoder()
+                .decode(authToken)).split(":")[0];
+    }
+
+
+ /*   @CrossOrigin(origins = "*")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Principal login(@RequestBody UserDTO userDTO, HttpServletRequest request) {
-        if (userService.isUserDataIsCorrect(userDTO.getUserName(), userDTO.getPassword())) {
+        if (userDTO.getUserName().equals("User") && userDTO.getPassword().equals("password")) {
+            //if (userService.isUserDataIsCorrect(userDTO.getUserName(), userDTO.getPassword())) {
+            System.out.println(request.getHeader("Authorization"));
             String authToken = request.getHeader("Authorization")
                     .substring("Basic".length()).trim();
             return () -> new String(Base64.getDecoder()
@@ -30,11 +47,11 @@ public class UserController {
         } else {
             return null;
         }
-    }
+    }*/
 
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public boolean register(@RequestBody UserDTO userDTO){
+    public boolean register(@RequestBody UserDTO userDTO) {
         return userService.registerUser(userDTO);
     }
 }

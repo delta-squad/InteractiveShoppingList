@@ -16,15 +16,15 @@ public class Product {
     private String name;
 
     @Column(name = "price")
-    private String price;
+    private Double price;
 
 
-    public Product(String name, String price) {
+    public Product(String name, Double price) {
         this.name = name;
         this.price = price;
     }
 
-    public Product(Long id, String name, String price) {
+    public Product(Long id, String name, Double price) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -46,11 +46,11 @@ public class Product {
         this.name = name;
     }
 
-    public String getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 }

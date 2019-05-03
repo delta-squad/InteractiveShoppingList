@@ -8,11 +8,10 @@ import javax.persistence.*;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    //@Column(name = "isUserDataIsCorrect", nullable = false)
     @Column(name = "user_name", nullable = false)
     private String userName;
 
@@ -28,7 +27,14 @@ public class User {
         this.emailAddress = emailAddress;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
+    public User() {
+
+    }
+    
     public Long getId() {
         return id;
     }

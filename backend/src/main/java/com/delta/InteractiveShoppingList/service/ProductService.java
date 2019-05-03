@@ -20,18 +20,18 @@ public class ProductService {
 
 
     public void addProduct(ProductDTO productDTO) {
-        productDAO.addProduct(new Product(productDTO.getName(), productDTO.getPrice()));
+        productDAO.addProduct(new Product(productDTO.getName(), Double.valueOf(productDTO.getPrice())));
     }
 
     public void updateProduct(Long id, ProductDTO productDTO) {
-        productDAO.updateProduct(new Product(id, productDTO.getName(), productDTO.getPrice()));
+        productDAO.updateProduct(new Product(id, productDTO.getName(), Double.valueOf(productDTO.getPrice())));
     }
 
     public List<ProductDTO> getProducts() {
         List<Product> products = productDAO.getProducts();
         List<ProductDTO> productsDTO = null;
-        for(Product product: products){
-            productsDTO.add(new ProductDTO(product.getName(), product.getPrice()));
+        for (Product product : products) {
+            productsDTO.add(new ProductDTO(product.getName(), product.getPrice().toString()));
         }
         return productsDTO;
     }
