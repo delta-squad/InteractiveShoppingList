@@ -44,28 +44,6 @@ dependencies {
     implementation('com.h2database:h2')
     implementation('javax.xml.bind:jaxb-api:2.3.0')
     testImplementation('org.springframework.boot:spring-boot-starter-test')
-    compile group: 'javax.persistence', name: 'persistence-api', version: '1.0'
 
     implementation(project(':frontend'))
-}
-
-bootJar {
-    mainClassName = "com.delta.InteractiveShoppingList.InteractiveShoppingListApplication"
-}
-
-springBoot {
-    mainClassName = "com.delta.InteractiveShoppingList.InteractiveShoppingListApplication"
-}
-
-task stage(type: Copy, dependsOn: [clean, build]) {
-    from jar.archivePath
-    into project.rootDir
-    rename {
-        'InteractiveShoppingList.jar'
-    }
-}
-stage.mustRunAfter(clean)
-
-clean << {
-    project.file('InteractiveShoppingList.jar').delete()
 }
