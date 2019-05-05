@@ -48,11 +48,8 @@ dependencies {
     implementation(project(':frontend'))
 }
 
-task stage(type: Copy, dependsOn: [clean, build]) {
+task stage(type: Copy, dependsOn: [build]) {
 
 }
-stage.mustRunAfter(clean)
+stage.mustRunAfter(build)
 
-clean << {
-    project.file('app.jar').delete()
-}
