@@ -47,3 +47,16 @@ dependencies {
 
     implementation(project(':frontend'))
 }
+
+task stage(type: Copy, dependsOn: [clean, build]) {
+    from jar.archivePath
+    into project.rootDir
+    rename {
+        'InteractiveShoppingList.jar'
+    }
+}
+stage.mustRunAfter(clean)
+
+clean << {
+    project.file('InteractiveShoppingList.jar').delete()
+}
