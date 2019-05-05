@@ -48,8 +48,3 @@ dependencies {
     implementation(project(':frontend'))
 }
 
-task stage(type: Copy, dependsOn: [build]) {
-
-}
-stage.mustRunAfter(build)
-
