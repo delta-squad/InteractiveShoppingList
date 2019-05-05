@@ -52,11 +52,11 @@ task stage(type: Copy, dependsOn: [clean, build]) {
     from jar.archivePath
     into project.rootDir
     rename {
-        'InteractiveShoppingList.jar'
+        'app.jar'
     }
 }
 stage.mustRunAfter(clean)
 
 clean << {
-    project.file('InteractiveShoppingList.jar').delete()
+    project.file('app.jar').delete()
 }
