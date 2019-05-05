@@ -1,4 +1,4 @@
-package com.delta.InteractiveShoppingList.dto;
+package com.delta.InteractiveShoppingList.product;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 

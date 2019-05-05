@@ -1,4 +1,4 @@
-package com.delta.InteractiveShoppingList.dto;
+package com.delta.InteractiveShoppingList.user;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
@@ -13,7 +13,7 @@ public class UserDTO {
         return emailAddress;
     }
 
-    public String getUserName() {
+    public String getLogin() {
         return userName;
     }
 

@@ -1,4 +1,4 @@
-package com.delta.InteractiveShoppingList.dao;
+package com.delta.InteractiveShoppingList.product;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +25,6 @@ public class ProductDAO {
     }
 
     public void updateProduct(Product product) {
-        entityManager.merge(product);
+      entityManager.merge(product);
     }
 }

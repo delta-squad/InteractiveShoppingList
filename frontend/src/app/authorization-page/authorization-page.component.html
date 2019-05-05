@@ -20,9 +20,9 @@
         <mat-divider></mat-divider>
         <div class="form-group">
           <label class="mat-title">Username</label>
-          <input matInput [class.is-invalid]="userName.invalid && userName.touched"
-                 formControlName="userName" type="text" class="form-control" placeholder="Username"/>
-          <small [class.d-none]="userName.valid || userName.untouched" class="text-danger">Username is required
+          <input matInput [class.is-invalid]="login.invalid && login.touched"
+                 formControlName="login" type="text" class="form-control" placeholder="Username"/>
+          <small [class.d-none]="login.valid || login.untouched" class="text-danger">Username is required
           </small>
         </div>
         <div class="form-group">

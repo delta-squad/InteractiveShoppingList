@@ -1,7 +1,5 @@
-package com.delta.InteractiveShoppingList.contoller;
+package com.delta.InteractiveShoppingList.product;
 
-import com.delta.InteractiveShoppingList.dto.ProductDTO;
-import com.delta.InteractiveShoppingList.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

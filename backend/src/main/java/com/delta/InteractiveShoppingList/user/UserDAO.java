@@ -1,6 +1,5 @@
-package com.delta.InteractiveShoppingList.dao;
+package com.delta.InteractiveShoppingList.user;
 
-import com.delta.InteractiveShoppingList.dto.UserDTO;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,8 +13,8 @@ public class UserDAO {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public User getUserByUsername(String name) {
-        User user = (User) entityManager.createQuery("Select u from User u where u.userName like :name").setParameter("name", name).getSingleResult();
+    public User getUserByLogin(String name) {
+        User user = (User) entityManager.createQuery("Select u from User u where u.login like :name").setParameter("name", name).getSingleResult();
         return user;
     }
 
