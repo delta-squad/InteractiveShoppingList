@@ -1,7 +1,7 @@
 import {Component, HostListener, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
-import {ShoppingList} from "../../interfaces/shoppingList";
-import {Product} from "../../interfaces/product";
+import {ShoppingList} from "../../models/shoppingList";
+import {Product} from "../../models/product";
 
 @Component({
   selector: 'app-shopping-list-dialog',
@@ -17,7 +17,7 @@ export class ShoppingListDialogComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<ShoppingListDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) {
     this.evaluateShoppingList();
-    this.editTitleMode = this.shoppingList.title == undefined;
+    this.editTitleMode = !this.nameExists(this.shoppingList.title);
     dialogRef.backdropClick().subscribe(() => {
       this.saveOnClose()
     })
@@ -27,7 +27,7 @@ export class ShoppingListDialogComponent implements OnInit {
     if (this.data.shoppingList != undefined) {
       this.saveListValues();
     } else {
-      this.shoppingList = <ShoppingList>{};
+      this.shoppingList = new ShoppingList(99, "", new Array<Product>());
     }
   }
 
@@ -47,7 +47,7 @@ export class ShoppingListDialogComponent implements OnInit {
   }
 
   saveOnClose() {
-    if (this.shoppingList.title != undefined) {
+    if (this.nameExists(this.shoppingList.title)) {
       this.dialogRef.close(this.shoppingList);
     }
   }
@@ -59,12 +59,19 @@ export class ShoppingListDialogComponent implements OnInit {
   }
 
   saveTitle(title: string) {
-    this.shoppingList.title = title;
+    if (this.nameExists(title)) {
+      this.shoppingList.title = title;
+      this.editTitleMode = false;
+    }
   }
 
   addProduct(productName: string) {
-    if (productName != undefined)
-      this.shoppingList.products.push(<Product>{name: productName})
+    if (this.nameExists(productName))
+      this.shoppingList.products.push(new Product(99, productName, "Category"))
+  }
+
+  nameExists(name: string){
+    return name != "" && name != undefined;
   }
 
   @HostListener('window:keyup.esc') onKeyUp() {
