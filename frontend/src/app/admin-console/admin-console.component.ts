@@ -1,7 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Product} from "../interfaces/product";
-import {Observable} from "rxjs";
 import {EnrollmentService} from "../enrollment.service";
 import {AdminConsoleService} from "./admin-console.service";
 
@@ -13,32 +10,29 @@ import {AdminConsoleService} from "./admin-console.service";
 export class AdminConsoleComponent implements OnInit {
 
   opened = true;
-  public products=[
+  public products = [];
 
-
-
-  ];
-  constructor( private _service: AdminConsoleService, private _enrollService: EnrollmentService) {
+  constructor(private _service: AdminConsoleService, private _enrollService: EnrollmentService) {
   }
 
-  onSubmit()
-  {
+  onSubmit() {
     this._service.getProducts()
-      .subscribe(data => this.products = data,
-          error => console.error(alert("Something went wrong! Maybe JSON file is incorrect?"), error));
+        .subscribe(data => this.products = data,
+            error => console.error(alert("Something went wrong! Maybe JSON file is incorrect?"), error));
   }
-  printLog()
-  {
+
+  printLog() {
     console.log(this.products);
   }
-  sendProducts()
-  {
+
+  sendProducts() {
     this._enrollService.sendData(this.products)
-      .subscribe(
-        response => console.log(alert("The products has been send "), response),
-        error => console.error('Error', error)
-      );
+        .subscribe(
+            response => console.log(alert("The products has been send "), response),
+            error => console.error('Error', error)
+        );
   }
+
   ngOnInit() {
 
   }
