@@ -27,7 +27,8 @@ dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-web')
 	implementation('com.h2database:h2')
 	implementation('javax.xml.bind:jaxb-api:2.3.0')
+	compile 'mysql:mysql-connector-java'
+	compile 'org.liquibase:liquibase-core'
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
-
 	implementation(project(':frontend'))
 }
