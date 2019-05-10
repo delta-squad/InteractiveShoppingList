@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -14,14 +15,21 @@ public class ProductService {
     @Autowired
     ProductDAO productDAO;
 
-    public void addProduct(ProductDTO productDTO) {
+    public Long addProduct(ProductDTO productDTO) {
+        return productDAO.addProduct(new Product(productDTO.getName()));
     }
 
     public void updateProduct(Long id, ProductDTO productDTO) {
+        productDAO.updateProduct(new Product(id, productDTO.getName(), productDTO.getVersion()));
     }
 
-    public List<ProductDTO> getProducts() {
-        return null;
+    public ArrayList<ProductDTO> getList() {
+        List<Product> products = productDAO.getList();
+        ArrayList<ProductDTO> productDTOS = new ArrayList<>();
+        for (Product product : products) {
+            productDTOS.add(new ProductDTO(product.getId(), product.getName(), product.getVersion()));
+        }
+        return productDTOS;
     }
 }
 

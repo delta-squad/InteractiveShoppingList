@@ -5,7 +5,7 @@ import {ShoppingList} from "../models/shoppingList";
 
 @Injectable()
 export class DashboardService {
-  private _listsUrl: string = "./assets/data/lists.json";
+  private _listsUrl: string = "http://localhost:8080/products";
 
   constructor(private http: HttpClient) {
   }

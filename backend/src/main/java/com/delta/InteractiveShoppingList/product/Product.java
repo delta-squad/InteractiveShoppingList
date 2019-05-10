@@ -17,8 +17,8 @@ public class Product {
     @Column(name = "version")
     private Integer version;
 
-    @Column(name = "parent")
-    private Product product;
+    /*@Column(name = "parent")
+    private Product product;*/
 
     @Column(name = "is_category")
     private Boolean isCategory;
@@ -26,12 +26,23 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, Integer version, Product product, Boolean isCategory) {
+    public Product(String name, Integer version, Boolean isCategory) {
         this.name = name;
         this.version = version;
-        this.product = product;
         this.isCategory = isCategory;
     }
+
+    public Product(String name) {
+        this.name = name;
+        this.version = 1;
+    }
+
+    public Product(Long id, String name, Integer version) {
+        this.id = id;
+        this.name = name;
+        this.version = version;
+    }
+
 
     public Long getId() {
         return id;
@@ -57,13 +68,13 @@ public class Product {
         this.version = version;
     }
 
-    public Product getProduct() {
+/*    public Product getProduct() {
         return product;
     }
 
     public void setProduct(Product product) {
         this.product = product;
-    }
+    }*/
 
     public Boolean getCategory() {
         return isCategory;

@@ -5,12 +5,26 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class ProductDTO {
 
+    Long id;
     String name;
-    String price;
+    Integer version;
 
-    public ProductDTO(String name, String price) {
+    public ProductDTO(Long id, String name, Integer version) {
+        this.id = id;
         this.name = name;
-        this.price = price;
+        this.version = version;
+    }
+
+    public ProductDTO(String name) {
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -21,11 +35,11 @@ public class ProductDTO {
         this.name = name;
     }
 
-    public String getPrice() {
-        return price;
+    public Integer getVersion() {
+        return version;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 }

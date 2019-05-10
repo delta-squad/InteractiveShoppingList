@@ -15,16 +15,19 @@ public class ProductDAO {
     private EntityManager entityManager;
 
 
-    public void addProduct(Product product) {
+    public Long addProduct(Product product) {
         entityManager.persist(product);
+        entityManager.flush();
+        return product.getId();
     }
 
 
-    public List<Product> getProducts() {
-        return entityManager.createQuery("select * from product").getResultList();
+    public List getList() {
+        return entityManager.createQuery("select p from Product p").getResultList();
     }
 
     public void updateProduct(Product product) {
-      entityManager.merge(product);
+        product.setVersion(product.getVersion() + 1);
+        entityManager.merge(product);
     }
 }

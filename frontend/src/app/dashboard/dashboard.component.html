@@ -26,15 +26,15 @@
   </mat-sidenav>
 
   <mat-sidenav-content class="content-container">
-    <mat-grid-list [cols]="columnsNumber" (window:resize)="onResize($event)">
-      <mat-grid-tile *ngFor="let list of shoppingLists">
-        <mat-card class="listCard" (click)="openDialog(list)" matRipple>
-          <mat-card-title>{{list.title}}
+    <mat-grid-shoppingList [cols]="columnsNumber" (window:resize)="onResize($event)">
+      <mat-grid-tile *ngFor="let shoppingList of shoppingLists">
+        <mat-card class="listCard" (click)="openDialog(shoppingList)" matRipple>
+          <mat-card-title>{{shoppingList.title}}
             <mat-divider></mat-divider>
           </mat-card-title>
           <mat-card-content>
-            <mat-list>
-              <mat-list-item *ngFor="let product of list.products let i = index">
+            <mat-shoppingList>
+              <mat-shoppingList-item *ngFor="let product of shoppingList.products let i = index">
                 <div *ngIf="i<4">
                   {{product.name}}
                   <mat-divider></mat-divider>
@@ -42,8 +42,8 @@
                 <div *ngIf="i==4">
                   ...
                 </div>
-              </mat-list-item>
-            </mat-list>
+              </mat-shoppingList-item>
+            </mat-shoppingList>
           </mat-card-content>
         </mat-card>
       </mat-grid-tile>
@@ -56,7 +56,7 @@
           </mat-card-content>
         </mat-card>
       </mat-grid-tile>
-    </mat-grid-list>
+    </mat-grid-shoppingList>
   </mat-sidenav-content>
 </mat-sidenav-container>
 

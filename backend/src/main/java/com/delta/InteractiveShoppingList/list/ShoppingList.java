@@ -5,7 +5,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "list")
-public class List {
+public class ShoppingList {
 
     @Id
     @GeneratedValue
@@ -27,7 +27,7 @@ public class List {
     @Column(name = "last_edition")
     private Date lastEdition;
 
-    public List(Integer version, String title, Long owner, Date created, Date lastEdition) {
+    public ShoppingList(Integer version, String title, Long owner, Date created, Date lastEdition) {
         this.version = version;
         this.title = title;
         this.owner = owner;
@@ -35,7 +35,15 @@ public class List {
         this.lastEdition = lastEdition;
     }
 
-    public List() {
+    public ShoppingList() {
+    }
+
+    public ShoppingList(String title, Long owner) {
+        this.title = title;
+        this.owner = owner;
+        this.version = 1;
+        this.created = new Date();
+        this.lastEdition = new Date();
     }
 
     public Long getId() {

@@ -2,22 +2,19 @@ package com.delta.InteractiveShoppingList.list;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-public class ListDTO {
+import java.util.Date;
 
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+public class ShoppingListDTO {
+
+    Long id;
     String title;
-    String owner;
+    Long owner;
     String created;
     String lastEdited;
 
-    public ListDTO(String title, String owner, String created, String lastEdited) {
-        this.title = title;
-        this.owner = owner;
-        this.created = created;
-        this.lastEdited = lastEdited;
-    }
 
-    public ListDTO() {
+    public ShoppingListDTO() {
     }
 
     public String getTitle() {
@@ -28,12 +25,30 @@ public class ListDTO {
         this.title = title;
     }
 
-    public String getOwner() {
+    public Long getId() {
+        return id;
+    }
+
+    public ShoppingListDTO(Long id, String title, Long owner, String created, String lastEdited) {
+        this.id = id;
+        this.title = title;
+        this.owner = owner;
+        this.created = created;
+        this.lastEdited = lastEdited;
+    }
+
+    public Long getOwner() {
+
         return owner;
     }
 
-    public void setOwner(String owner) {
+    public void setOwner(Long owner) {
         this.owner = owner;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+
     }
 
     public String getCreated() {

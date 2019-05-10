@@ -1,6 +1,6 @@
 package com.delta.InteractiveShoppingList.listContent;
 
-import com.delta.InteractiveShoppingList.list.ListDAO;
+import com.delta.InteractiveShoppingList.list.ShoppingListDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -10,5 +10,5 @@ import org.springframework.stereotype.Service;
 public class ListContentService {
 
     @Autowired
-    ListDAO listDAO;
+    ShoppingListDAO shoppingListDAO;
 }
