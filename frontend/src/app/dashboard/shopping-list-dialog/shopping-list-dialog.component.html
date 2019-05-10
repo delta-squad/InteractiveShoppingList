@@ -4,7 +4,7 @@
     <mat-icon>edit</mat-icon>
   </button>
   <span *ngIf="editTitleMode">
-        <input matInput #titleInput placeholder="Shopping shoppingList title" [ngModel]="shoppingList.title" class="wideInput"
+        <input matInput #titleInput placeholder="Shopping list title" [ngModel]="shoppingList.title" class="wideInput"
                (keydown.enter)="saveTitle(titleInput.value)">
         <button mat-icon-button color="primary" (click)="saveTitle(titleInput.value)">
           <mat-icon>check</mat-icon>
@@ -14,8 +14,8 @@
 </h2>
 
 <mat-dialog-content class="dialogContent">
-  <mat-selection-shoppingList>
-    <mat-shoppingList-option *ngFor="let product of shoppingList.products; let index=index">
+  <mat-selection-list>
+    <mat-list-option *ngFor="let product of shoppingList.products; let index=index">
       <div>
         {{product.name}}
         <button mat-icon-button (click)="removeProductAt(index)" color="primary">
@@ -26,8 +26,8 @@
         <span class="spacer"></span>
       </div>
       <mat-divider></mat-divider>
-    </mat-shoppingList-option>
-  </mat-selection-shoppingList>
+    </mat-list-option>
+  </mat-selection-list>
 </mat-dialog-content>
 
 <mat-dialog-actions>
