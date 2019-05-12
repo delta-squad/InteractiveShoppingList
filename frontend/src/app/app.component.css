@@ -1,10 +1,8 @@
-.spacer{
+.spacer {
   padding: 10px;
 }
+
 .navBar {
   justify-content: space-between;
 }
 
-mat-toolbar{
-  height: 10vh;
-}

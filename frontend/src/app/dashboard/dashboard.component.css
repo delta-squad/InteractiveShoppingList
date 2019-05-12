@@ -1,12 +1,25 @@
-mat-sidenav-container, mat-sidenav, mat-sidenav-content{
+*:focus {
+  outline: none !important;
+  border: 0 !important;
+}
+
+.completed {
+  color: #9d9d9d;
+  text-decoration: line-through;
+}
+
+.listCard {
+  width: calc(100% - 70px);
+  height: calc(100% - 70px);
+}
+
+.newListContent {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-container {
   height: 90vh;
-}
-
-mat-sidenav, mat-sidenav-content {
-  padding: 16px;
-}
-
-mat-sidenav {
-  background-color: #3F51B5;
-  color: white;
 }
