@@ -1,0 +1,48 @@
+<h2 mat-dialog-title>
+  <span *ngIf="!editTitleMode">{{shoppingList.title}}</span>
+  <button *ngIf="!editTitleMode" mat-icon-button color="primary" (click)="editTitleMode = true">
+    <mat-icon>edit</mat-icon>
+  </button>
+  <span *ngIf="editTitleMode">
+        <input matInput #titleInput placeholder="Shopping list title" [ngModel]="shoppingList.title" class="wideInput"
+               (keydown.enter)="saveTitle(titleInput.value)">
+        <button mat-icon-button color="primary" (click)="saveTitle(titleInput.value)">
+          <mat-icon>check</mat-icon>
+        </button>
+  </span>
+  <mat-divider></mat-divider>
+</h2>
+
+<mat-dialog-content class="dialogContent">
+  <mat-selection-list>
+    <mat-list-option *ngFor="let product of shoppingList.products; let index=index">
+      <div>
+        {{product.name}}
+        <button mat-icon-button (click)="removeProductAt(index)" color="primary">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #myDatepicker></mat-datepicker>
+        <span class="spacer"></span>
+      </div>
+      <mat-divider></mat-divider>
+    </mat-list-option>
+  </mat-selection-list>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <ng-container *ngIf="nameExists(shoppingList.title)">
+    <input matInput #itemInput placeholder="Start typing new item name" class="wideInput"
+           (keydown.enter)="addProduct(itemInput.value); itemInput.value=''" autocomplete="off">
+    <button mat-icon-button color="primary" (click)="addProduct(itemInput.value); itemInput.value=''">
+      <mat-icon>check</mat-icon>
+    </button>
+    <br>
+    <button mat-mini-fab color="primary" (click)="saveOnClose()">
+      <mat-icon>check</mat-icon>
+    </button>
+    <button mat-mini-fab color="primary" (click)="discardChanges()">
+      <mat-icon>cancel</mat-icon>
+    </button>
+  </ng-container>
+</mat-dialog-actions>

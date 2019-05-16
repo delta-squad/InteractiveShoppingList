@@ -1,48 +1,6 @@
-
-mat-sidenav-container, mat-sidenav, mat-sidenav-content{
-  height: 90vh;
-}
-
-mat-sidenav, mat-sidenav-content {
-  padding: 16px;
-}
-
-mat-sidenav {
-  background-color: #3F51B5;
-  color: white;
-}
 *:focus {
   outline: none !important;
   border: 0 !important;
-}
-.list-item {
-  margin:20px;
-  width: 100%;
-  border-bottom: 1px solid #CCC;
-  font-size:20px;
-}
-
-.list-item button .material-icons {
-  font-size: 30px;
-  color:#9d9d9d;
-  padding: 0;
-
-}
-
-.list-item:hover button {
-  display: block;
-}
-
-.list-item button {
-  display: none;
-  float: right;
-  margin: -4px 5px;
-  width: 30px;
-  height: 30px;
-}
-
-.list-item /deep/ .md-checkbox-label {
-  margin: 10px 0;
 }
 
 .completed {
@@ -50,8 +8,18 @@ mat-sidenav {
   text-decoration: line-through;
 }
 
-.fab-add {
-  position: absolute;
-  right: 30px;
-  top: 50px;
+.listCard {
+  width: calc(100% - 70px);
+  height: calc(100% - 70px);
+}
+
+.newListContent {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-container {
+  height: 90vh;
 }

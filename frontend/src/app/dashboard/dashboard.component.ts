@@ -1,58 +1,70 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {MatDialog} from "@angular/material";
+import {ShoppingListDialogComponent} from "./shopping-list-dialog/shopping-list-dialog.component";
+import {ShoppingList} from "../models/shoppingList";
+import {DashboardService} from "./dashboard.service";
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css', '../app.component.css']
 })
-export class DashboardComponent  {
-  opened = true;
-  showDialog = false;
-  editingTodo: any = null;
-  fieldValue = '';
-  todoList: any = [];
-  okButtonText = 'Dodaj';
 
-  todoDialog(todo = null) {
-    this.okButtonText = 'Dodaj';
-    this.fieldValue = '';
-    this.editingTodo = todo;
-    if (todo) {
-      this.fieldValue = todo.title;
-      this.okButtonText = 'Edytuj';
-    }
-    this.showDialog = true;
+export class DashboardComponent implements OnInit {
+  columnsNumber: number;
+  bigScreenSize: number = 850;
+  mediumScreenSize: number = 550;
+
+  shoppingLists: Array<ShoppingList>;
+
+  constructor(public dialog: MatDialog, private _service: DashboardService) {
   }
 
-  remove(index: number) {
-    this.todoList.splice(index, 1);
+  getData() {
+    this._service.getShoppingLists()
+        .subscribe(data => this.shoppingLists = data, error => console.error(error));
   }
 
-  editTodo(title) {
-    this.editingTodo.title = title;
-  }
+  openDialog(list: ShoppingList): void {
+    let dialogRef = this.dialog.open(ShoppingListDialogComponent, {
+      data: {
+        shoppingList: list
+      },
+      autoFocus: list == undefined,
+      height: '90vh',
+      width: '60%'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result != undefined) {
+        let index = this.shoppingLists.indexOf(list);
 
-  updateTodo(title) {
-    if (title) {
-      title = title.trim();
-      if (this.editingTodo) {
-        this.editTodo(title);
-      } else {
-        this.addTodo(title);
+        if (index !== -1) {
+          this.shoppingLists[index] = result;
+        } else {
+          this.shoppingLists.push(result);
+        }
       }
-    }
-    this.hideDialog();
+    });
   }
 
-  addTodo(title) {
-    const todo = {title: title, completed: false};
-    this.todoList.push(todo);
+  ngOnInit() {
+    this.getData();
+    this.calculateColumnsNumber();
   }
 
-  hideDialog() {
-    this.showDialog = false;
-    this.editingTodo = null;
-    this.fieldValue = null; // make sure Input is new
+  private calculateColumnsNumber() {
+    if (window.innerWidth > this.bigScreenSize) {
+      this.columnsNumber = 3;
+    } else if (window.innerWidth <= this.bigScreenSize && window.innerWidth > this.mediumScreenSize) {
+      this.columnsNumber = 2;
+    } else this.columnsNumber = 1;
   }
 
+  onResize(event) {
+    if (event.target.innerWidth > this.bigScreenSize) {
+      this.columnsNumber = 3;
+    } else if (event.target.innerWidth <= this.bigScreenSize && event.target.innerWidth > this.mediumScreenSize) {
+      this.columnsNumber = 2;
+    } else this.columnsNumber = 1;
+  }
 }

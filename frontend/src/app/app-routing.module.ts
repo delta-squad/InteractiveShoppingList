@@ -7,9 +7,10 @@ import {AdminConsoleComponent} from "./admin-console/admin-console.component";
 const routes: Routes = [
   {path: '', component: AuthorizationPageComponent},
   {path: 'dashboard', component: DashboardComponent},
-  {path: 'admin', component: AdminConsoleComponent}
+  {path: 'admin', component: AdminConsoleComponent},
+  {path: '**', redirectTo: '' }
 ];
-
+//export const routing = RouterModule.forRoot(routes);
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

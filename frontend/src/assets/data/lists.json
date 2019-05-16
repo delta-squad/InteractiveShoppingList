@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "title": "First list title",
+    "products": [
+      {
+        "id": 1,
+        "name": "Beer",
+        "category": "Category"
+      },
+      {
+        "id": 2,
+        "name": "Eggs",
+        "category": "Category"
+      },
+      {
+        "id": 3,
+        "name": "Cheese",
+        "category": "Category"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Second list title",
+    "products": [
+      {
+        "id": 4,
+        "name": "Juice",
+        "category": "Category"
+      },
+      {
+        "id": 5,
+        "name": "Vodka",
+        "category": "Category"
+      },
+      {
+        "id": 6,
+        "name": "Bread",
+        "category": "Category"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Third list title",
+    "products": [
+      {
+        "id": 7,
+        "name": "Salad",
+        "category": "Category"
+      },
+      {
+        "id": 8,
+        "name": "Cheese",
+        "category": "Category"
+      },
+      {
+        "id": 9,
+        "name": "Ham",
+        "category": "Category"
+      },
+      {
+        "id": 10,
+        "name": "Soup",
+        "category": "Category"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Fourth list title",
+    "products": [
+      {
+        "id": 7,
+        "name": "Salad",
+        "category": "Category"
+      },
+      {
+        "id": 8,
+        "name": "Cheese",
+        "category": "Category"
+      },
+      {
+        "id": 3,
+        "name": "Juice",
+        "category": "Category"
+      },
+      {
+        "id": 4,
+        "name": "Beer",
+        "category": "Category"
+      },
+      {
+        "id": 5,
+        "name": "Vodka",
+        "category": "Category"
+      },
+      {
+        "id": 6,
+        "name": "Apple",
+        "category": "Category"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Last list title",
+    "products": [
+      {
+        "id": 7,
+        "name": "Salad",
+        "category": "Category"
+      },
+      {
+        "id": 1,
+        "name": "Egg",
+        "category": "Category"
+      },
+      {
+        "id": 2,
+        "name": "Bread",
+        "category": "Category"
+      },
+      {
+        "id": 3,
+        "name": "Juice",
+        "category": "Category"
+      },
+      {
+        "id": 4,
+        "name": "Beer",
+        "category": "Category"
+      },
+      {
+        "id": 6,
+        "name": "Apple",
+        "category": "Category"
+      }
+    ]
+  }
+]
