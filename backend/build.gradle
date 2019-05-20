@@ -35,8 +35,9 @@ dependencies {
 	compile("org.webjars:stomp-websocket:2.3.3")
 	compile("org.webjars:bootstrap:3.3.7")
 	compile("org.webjars:jquery:3.1.0")
-	testImplementation('org.springframework.boot:spring-boot-starter-test')
 	compile 'mysql:mysql-connector-java'
+	compile 'org.liquibase:liquibase-core'
+	testImplementation('org.springframework.boot:spring-boot-starter-test')
 
 	implementation(project(':frontend'))
 }
