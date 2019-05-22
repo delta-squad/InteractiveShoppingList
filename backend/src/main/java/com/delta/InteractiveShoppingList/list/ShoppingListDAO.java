@@ -16,7 +16,7 @@ public class ShoppingListDAO {
     private EntityManager entityManager;
 
     public List<ShoppingList> getListsByUserId(Long userId) {
-        return entityManager.createQuery("Select l from List l where l.owner like :id").setParameter("id", userId).getResultList();
+        return entityManager.createQuery("Select l from ShoppingList l where l.owner like :id").setParameter("id", userId).getResultList();
     }
 
     public Long add(ShoppingList shoppingList) {

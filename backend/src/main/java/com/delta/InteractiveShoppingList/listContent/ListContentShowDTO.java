@@ -3,23 +3,23 @@ package com.delta.InteractiveShoppingList.listContent;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-public class ListContentDTO {
+public class ListContentShowDTO {
 
     Long listId;
-    Long productId;
+    String productName;
     Long addedBy;
     Float amount;
     String amountUnit;
 
-    public ListContentDTO(Long listId, Long productId, Long addedBy, Float amount, String amountUnit) {
+    public ListContentShowDTO() {
+    }
+
+    public ListContentShowDTO(Long listId, String productName, Long addedBy, Float amount, String amountUnit) {
         this.listId = listId;
-        this.productId = productId;
+        this.productName = productName;
         this.addedBy = addedBy;
         this.amount = amount;
         this.amountUnit = amountUnit;
-    }
-
-    public ListContentDTO() {
     }
 
     public Long getListId() {
@@ -28,14 +28,6 @@ public class ListContentDTO {
 
     public void setListId(Long listId) {
         this.listId = listId;
-    }
-
-    public Long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Long productId) {
-        this.productId = productId;
     }
 
     public Long getAddedBy() {

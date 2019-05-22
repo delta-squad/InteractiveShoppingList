@@ -16,6 +16,7 @@ public class ProductDAO {
 
 
     public Long addProduct(Product product) {
+        product.setVersionOrDefault();
         entityManager.persist(product);
         entityManager.flush();
         return product.getId();
@@ -29,5 +30,9 @@ public class ProductDAO {
     public void updateProduct(Product product) {
         product.setVersion(product.getVersion() + 1);
         entityManager.merge(product);
+    }
+
+    public Product getById(Long productId) {
+        return entityManager.find(Product.class, productId);
     }
 }
