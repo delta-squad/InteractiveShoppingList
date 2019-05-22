@@ -11,7 +11,13 @@ import {
   MatListModule,
   MatDividerModule,
   MatInputModule,
-  MatCardModule
+  MatCardModule,
+  MatDialogModule,
+  MatCheckboxModule,
+  MatRippleModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatGridListModule
 } from '@angular/material';
 
 const MaterialComponents = [
@@ -26,7 +32,13 @@ const MaterialComponents = [
   MatListModule,
   MatDividerModule,
   MatInputModule,
-  MatCardModule
+  MatCardModule,
+  MatDialogModule,
+  MatCheckboxModule,
+  MatRippleModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatGridListModule
 ];
 
 @NgModule({
