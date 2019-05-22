@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    
+    <changeSet id="04" author="Tomek">
+        <createTable tableName="list_content">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="version" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="list_id" type="int">
+                <constraints foreignKeyName="fk_listcontent_listid" references="list(id)" nullable="false"/>
+            </column>
+            <column name="product_id" type="int">
+                <constraints foreignKeyName="fk_listcontent_productid" references="product(id)" unique="true" nullable="false"/>
+            </column>
+            <column name="added_by" type="int">
+                <constraints foreignKeyName="fk_listcontent_addedby" references="user(id)" nullable="false"/>
+            </column>
+            <column name="amount" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="time_of_addition" type="date">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <tagDatabase tag="1.3"/>
+    </changeSet>
+</databaseChangeLog>
