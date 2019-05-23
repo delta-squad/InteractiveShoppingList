@@ -26,6 +26,5 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-        <tagDatabase tag="1.2"/>
     </changeSet>
 </databaseChangeLog>

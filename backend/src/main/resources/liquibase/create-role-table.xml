@@ -11,12 +11,11 @@
                 <constraints primaryKey="true"/>
             </column>
             <column name="version" type="int">
-                <constraints nullable="true"/>
+                <constraints nullable="false"/>
             </column>
-            <column name="status" type="varchar(25">
+            <column name="status" type="varchar(25)">
                 <constraints unique="true" nullable="false"/>
             </column>
         </createTable>
-        <tagDatabase tag="1.4"/>
     </changeSet>
 </databaseChangeLog>
