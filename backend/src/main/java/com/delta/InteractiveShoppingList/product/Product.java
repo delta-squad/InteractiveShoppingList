@@ -83,4 +83,12 @@ public class Product {
     public void setCategory(Boolean category) {
         isCategory = category;
     }
+
+    public void setVersionOrDefault() {
+        if (version != null) {
+            version = version++;
+        } else {
+            version = 1;
+        }
+    }
 }

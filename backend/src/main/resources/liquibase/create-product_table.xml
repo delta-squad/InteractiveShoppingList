@@ -4,28 +4,28 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
-
-    <changeSet author="Tomek" id="01">
-        <createTable tableName="user">
+    
+    <changeSet id="03" author="Tomek">
+        <createTable tableName="product">
             <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
             <column name="version" type="int">
                 <constraints nullable="false"/>
             </column>
-            <column name="login" type="varchar(25)">
-                <constraints nullable="false" unique="true"/>
+            <column name="name" type="varchar(50)">
+                <constraints unique="true" nullable="false"/>
             </column>
-            <column name="password" type="varchar(25)">
+            <column name="parent" type="int">
+                <constraints foreignKeyName="fk_product_id" references="product(id)" nullable="false"/>
+            </column>
+            <column name="is_category" type="bool">
                 <constraints nullable="false"/>
-            </column>
-            <column name="email" type="varchar(50)">
-                <constraints nullable="false" unique="true"/>
             </column>
             <column name="created" type="date">
                 <constraints nullable="false"/>
             </column>
         </createTable>
-        <tagDatabase tag="1.0"/>
+        <tagDatabase tag="1.2"/>
     </changeSet>
 </databaseChangeLog>

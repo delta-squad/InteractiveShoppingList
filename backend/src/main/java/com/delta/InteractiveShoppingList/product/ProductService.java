@@ -15,21 +15,21 @@ public class ProductService {
     @Autowired
     ProductDAO productDAO;
 
-    public Long addProduct(ProductDTO productDTO) {
-        return productDAO.addProduct(new Product(productDTO.getName()));
+    public Long addProduct(ProductDTO productListDTO) {
+        return productDAO.addProduct(new Product(productListDTO.getName()));
     }
 
-    public void updateProduct(Long id, ProductDTO productDTO) {
-        productDAO.updateProduct(new Product(id, productDTO.getName(), productDTO.getVersion()));
+    public void updateProduct(Long id, ProductListDTO productListDTO) {
+        productDAO.updateProduct(new Product(id, productListDTO.getName(), productListDTO.getVersion()));
     }
 
-    public ArrayList<ProductDTO> getList() {
+    public ArrayList<ProductListDTO> getList() {
         List<Product> products = productDAO.getList();
-        ArrayList<ProductDTO> productDTOS = new ArrayList<>();
+        ArrayList<ProductListDTO> productListDTOS = new ArrayList<>();
         for (Product product : products) {
-            productDTOS.add(new ProductDTO(product.getId(), product.getName(), product.getVersion()));
+            productListDTOS.add(new ProductListDTO(product.getId(), product.getName(), product.getVersion()));
         }
-        return productDTOS;
+        return productListDTOS;
     }
 }
 

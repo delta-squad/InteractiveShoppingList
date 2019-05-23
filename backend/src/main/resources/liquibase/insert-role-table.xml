@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    
+    <changeSet id="07" author="Tomek">
+        <insert tableName="role">
+            <column name="version" value="1"/>
+            <column name="status" value="owner"/>
+        </insert>
+        <insert tableName="role">
+            <column name="version" value="1"/>
+            <column name="status" value="editor"/>
+        </insert>
+        <insert tableName="role">
+            <column name="version" value="1"/>
+            <column name="status" value="viewer"/>
+        </insert>
+        <tagDatabase tag="1.6"/>
+    </changeSet>
+</databaseChangeLog>

@@ -10,9 +10,6 @@ public class ShoppingListDTO {
     Long id;
     String title;
     Long owner;
-    String created;
-    String lastEdited;
-
 
     public ShoppingListDTO() {
     }
@@ -29,12 +26,10 @@ public class ShoppingListDTO {
         return id;
     }
 
-    public ShoppingListDTO(Long id, String title, Long owner, String created, String lastEdited) {
+    public ShoppingListDTO(Long id, String title, Long owner) {
         this.id = id;
         this.title = title;
         this.owner = owner;
-        this.created = created;
-        this.lastEdited = lastEdited;
     }
 
     public Long getOwner() {
@@ -49,21 +44,5 @@ public class ShoppingListDTO {
     public void setId(Long id) {
         this.id = id;
 
-    }
-
-    public String getCreated() {
-        return created;
-    }
-
-    public void setCreated(String created) {
-        this.created = created;
-    }
-
-    public String getLastEdited() {
-        return lastEdited;
-    }
-
-    public void setLastEdited(String lastEdited) {
-        this.lastEdited = lastEdited;
     }
 }

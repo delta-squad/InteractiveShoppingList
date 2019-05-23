@@ -19,7 +19,7 @@ public class ShoppingListService {
         ArrayList<ShoppingListDTO> shoppingListDTOS = new ArrayList<>();
         for (ShoppingList shoppingList : shoppingLists) {
             shoppingListDTOS.add(new ShoppingListDTO
-                    (shoppingList.getId(), shoppingList.getTitle(), shoppingList.getOwner(), shoppingList.getCreated().toString(), shoppingList.getLastEdition().toString()));
+                    (shoppingList.getId(), shoppingList.getTitle(), shoppingList.getOwner()));
         }
         return shoppingListDTOS;
     }
