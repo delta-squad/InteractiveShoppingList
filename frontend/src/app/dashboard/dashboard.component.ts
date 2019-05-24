@@ -3,6 +3,8 @@ import {MatDialog} from "@angular/material";
 import {ShoppingListDialogComponent} from "./shopping-list-dialog/shopping-list-dialog.component";
 import {ShoppingList} from "../models/shoppingList";
 import {DashboardService} from "./dashboard.service";
+import {EventService} from "./event.service";
+import {forEach} from "@angular/router/src/utils/collection";
 
 @Component({
   selector: 'app-dashboard',
@@ -17,12 +19,18 @@ export class DashboardComponent implements OnInit {
 
   shoppingLists: Array<ShoppingList>;
 
-  constructor(public dialog: MatDialog, private _service: DashboardService) {
+  constructor(public dialog: MatDialog, private _service: DashboardService, private EventService: EventService) {
   }
 
   getData() {
     this._service.getShoppingLists()
         .subscribe(data => this.shoppingLists = data, error => console.error(error));
+
+  }
+
+  wsConnection(){
+    let that = this;
+    this.EventService.connect();
   }
 
   openDialog(list: ShoppingList): void {
@@ -50,6 +58,11 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.getData();
     this.calculateColumnsNumber();
+    this.wsConnection();
+  }
+
+  ngOnDestroy(){
+    this.EventService.disconnect();
   }
 
   private calculateColumnsNumber() {
@@ -67,4 +80,6 @@ export class DashboardComponent implements OnInit {
       this.columnsNumber = 2;
     } else this.columnsNumber = 1;
   }
+
+  public
 }
