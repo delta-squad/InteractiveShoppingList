@@ -18,6 +18,5 @@
             <column name="version" value="1"/>
             <column name="status" value="viewer"/>
         </insert>
-        <tagDatabase tag="1.6"/>
     </changeSet>
 </databaseChangeLog>

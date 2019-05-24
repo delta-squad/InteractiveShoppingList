@@ -23,6 +23,5 @@
                 <constraints foreignKeyName="fk_permission_roleid" references="role(id)" nullable="false"/>
             </column>
         </createTable>
-        <tagDatabase tag="1.5"/>
     </changeSet>
 </databaseChangeLog>
