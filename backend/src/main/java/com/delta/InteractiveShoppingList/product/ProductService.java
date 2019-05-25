@@ -31,6 +31,16 @@ public class ProductService {
         }
         return productListDTOS;
     }
+
+    public void saveAll(List<ProductDTO> read) {
+
+        List<Product> products = new ArrayList<>();
+        for (ProductDTO productDTO: read){
+            products.add(new Product(productDTO.getName()));
+        }
+        productDAO.saveAll(products);
+
+    }
 }
 
 

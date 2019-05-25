@@ -35,4 +35,11 @@ public class ProductDAO {
     public Product getById(Long productId) {
         return entityManager.find(Product.class, productId);
     }
+
+    public void saveAll(List<Product> products) {
+        for (Product product : products) {
+            product.setVersionOrDefault();
+            entityManager.persist(product);
+        }
+    }
 }
