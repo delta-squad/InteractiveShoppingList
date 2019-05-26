@@ -2,23 +2,30 @@ package com.delta.InteractiveShoppingList.product;
 
 import org.h2.tools.Csv;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("")
 public class ProductController {
 
+    private final ProductService productService;
+
     @Autowired
-    ProductService productService;
+    public ProductController(ProductService productService) {
+
+        this.productService = productService;
+    }
 
     @GetMapping("/products")
-    public ArrayList<ProductListDTO> getList() {
+    public List<ProductListDTO> getList() {
         return productService.getList();
     }
 

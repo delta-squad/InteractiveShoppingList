@@ -7,12 +7,10 @@ public class ProductListDTO {
 
     Long id;
     String name;
-    Integer version;
 
-    public ProductListDTO(Long id, String name, Integer version) {
+    ProductListDTO(Long id, String name) {
         this.id = id;
         this.name = name;
-        this.version = version;
     }
 
     public ProductListDTO(String name) {
@@ -33,13 +31,5 @@ public class ProductListDTO {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 @Service
@@ -20,27 +21,34 @@ public class ProductService {
     }
 
     public void updateProduct(Long id, ProductListDTO productListDTO) {
-        productDAO.updateProduct(new Product(id, productListDTO.getName(), productListDTO.getVersion()));
+        productDAO.updateProduct(new Product(id, productListDTO.getName()));
     }
 
-    public ArrayList<ProductListDTO> getList() {
+    public List<ProductListDTO> getList() {
+
         List<Product> products = productDAO.getList();
-        ArrayList<ProductListDTO> productListDTOS = new ArrayList<>();
-        for (Product product : products) {
-            productListDTOS.add(new ProductListDTO(product.getId(), product.getName(), product.getVersion()));
-        }
-        return productListDTOS;
+
+        return products.stream().map(this::toListDto).collect(Collectors.toList());
     }
 
     public void saveAll(List<ProductDTO> read) {
 
         List<Product> products = new ArrayList<>();
-        for (ProductDTO productDTO: read){
+        for (ProductDTO productDTO : read) {
             products.add(new Product(productDTO.getName()));
         }
         productDAO.saveAll(products);
 
     }
+
+    private ProductListDTO toListDto(Product product) {
+
+        return new ProductListDTO(
+                product.getId(),
+                product.getName()
+        );
+    }
+
 }
 
 

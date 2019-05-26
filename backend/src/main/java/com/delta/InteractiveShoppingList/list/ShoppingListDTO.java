@@ -1,5 +1,6 @@
 package com.delta.InteractiveShoppingList.list;
 
+import com.delta.InteractiveShoppingList.user.User;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 import java.util.Date;
@@ -9,10 +10,16 @@ public class ShoppingListDTO {
 
     Long id;
     String title;
-    Long owner;
+    Long ownerId;
 
     public ShoppingListDTO() {
     }
+
+    public ShoppingListDTO(Long id, String title) {
+        this.id = id;
+        this.title = title;
+    }
+
 
     public String getTitle() {
         return title;
@@ -26,23 +33,21 @@ public class ShoppingListDTO {
         return id;
     }
 
-    public ShoppingListDTO(Long id, String title, Long owner) {
+    public ShoppingListDTO(Long id, String title, Long ownerId) {
         this.id = id;
         this.title = title;
-        this.owner = owner;
-    }
-
-    public Long getOwner() {
-
-        return owner;
-    }
-
-    public void setOwner(Long owner) {
-        this.owner = owner;
+        this.ownerId = ownerId;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
 
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
     }
 }
