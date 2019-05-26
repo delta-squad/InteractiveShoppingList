@@ -8,10 +8,7 @@ public class Role {
 
     @Id
     @GeneratedValue
-    @Column(name = "id")
     private Long id;
-
-    @Column(name = "status")
     private String status;
 
 }

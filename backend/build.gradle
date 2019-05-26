@@ -1,13 +1,13 @@
 buildscript {
-	ext {
-		springBootVersion = '2.0.5.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+    ext {
+        springBootVersion = '2.0.5.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
 apply plugin: 'java'
@@ -18,21 +18,23 @@ apply plugin: 'io.spring.dependency-management'
 sourceCompatibility = 1.8
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 
 dependencies {
-	implementation('org.springframework.boot:spring-boot-starter-data-jpa')
-	implementation('org.springframework.boot:spring-boot-starter-web')
-	implementation('org.springframework.boot:spring-boot-starter-security')
-	//implementation("org.springframework.security.oauth:spring-security-oauth2:2.0.4.RELEASE")
-	//implementation("org.springframework.security:spring-security-jwt:1.0.2.RELEASE")
-	implementation('com.h2database:h2')
-	implementation('javax.xml.bind:jaxb-api:2.3.0')
-	compile 'mysql:mysql-connector-java'
-	compile 'org.liquibase:liquibase-core'
-	testImplementation('org.springframework.boot:spring-boot-starter-test')
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('org.springframework.boot:spring-boot-starter-security')
+    //implementation("org.springframework.security.oauth:spring-security-oauth2:2.0.4.RELEASE")
+    //implementation("org.springframework.security:spring-security-jwt:1.0.2.RELEASE")
+    implementation('com.h2database:h2')
+    implementation('javax.xml.bind:jaxb-api:2.3.0')
+    compile 'mysql:mysql-connector-java'
+    compile 'org.liquibase:liquibase-core'
 
-	implementation(project(':frontend'))
+    compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-csv', version: '2.9.9'
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+
+    implementation(project(':frontend'))
 }

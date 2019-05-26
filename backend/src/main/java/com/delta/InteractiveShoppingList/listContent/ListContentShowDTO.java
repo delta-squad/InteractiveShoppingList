@@ -1,5 +1,6 @@
 package com.delta.InteractiveShoppingList.listContent;
 
+import com.delta.InteractiveShoppingList.user.User;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)

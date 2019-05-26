@@ -1,7 +1,10 @@
 package com.delta.InteractiveShoppingList.permission;
 
+import com.delta.InteractiveShoppingList.list.ShoppingList;
+import com.delta.InteractiveShoppingList.role.Role;
+import com.delta.InteractiveShoppingList.user.User;
+
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "permission")
@@ -9,29 +12,19 @@ public class Permission {
 
     @Id
     @GeneratedValue
-    @Column(name = "id")
     private Long id;
-
-    @Column(name = "version")
     private Integer version;
+    @ManyToOne
+    private User user;
+    @ManyToOne
+    private Role role;
+    @ManyToOne
+    private ShoppingList list;
 
-    @Column(name = "user_id")
-    private Long userId;
-
-    @Column(name = "role_id")
-    private Long roleId;
-
-    @Column(name = "list_id")
-    private Long listId;
-
-    public Permission(Integer version, Long userId, Long roleId, Long listId) {
-        this.version = version;
-        this.userId = userId;
-        this.roleId = roleId;
-        this.listId = listId;
-    }
-
-    public Permission() {
+    public Permission(User user, ShoppingList list) {
+        this.version = 1;
+        this.user = user;
+        this.list = list;
     }
 
     public Long getId() {
@@ -50,27 +43,27 @@ public class Permission {
         this.version = version;
     }
 
-    public Long getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Long getRoleId() {
-        return roleId;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoleId(Long roleId) {
-        this.roleId = roleId;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
-    public Long getListId() {
-        return listId;
+    public ShoppingList getList() {
+        return list;
     }
 
-    public void setListId(Long listId) {
-        this.listId = listId;
+    public void setList(ShoppingList list) {
+        this.list = list;
     }
 }

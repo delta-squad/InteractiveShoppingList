@@ -8,41 +8,30 @@ public class Product {
 
     @Id
     @GeneratedValue
-    @Column(name = "id")
     private Long id;
-
-    @Column(name = "name")
     private String name;
-
-    @Column(name = "version")
     private Integer version;
-
-    /*@Column(name = "parent")
-    private Product product;*/
-
-    @Column(name = "is_category")
+    @ManyToOne
+    private Product parent;
     private Boolean isCategory;
 
     public Product() {
     }
 
-    public Product(String name, Integer version, Boolean isCategory) {
-        this.name = name;
-        this.version = version;
-        this.isCategory = isCategory;
-    }
+    Product(String name) {
 
-    public Product(String name) {
         this.name = name;
         this.version = 1;
+        this.parent = null;
+        this.isCategory = false;
+
     }
 
-    public Product(Long id, String name, Integer version) {
+    Product(Long id, String name) {
+
         this.id = id;
         this.name = name;
-        this.version = version;
     }
-
 
     public Long getId() {
         return id;
@@ -68,13 +57,13 @@ public class Product {
         this.version = version;
     }
 
-/*    public Product getProduct() {
-        return product;
+    public Product getParent() {
+        return parent;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
-    }*/
+    public void setParent(Product parent) {
+        this.parent = parent;
+    }
 
     public Boolean getCategory() {
         return isCategory;
@@ -84,7 +73,7 @@ public class Product {
         isCategory = category;
     }
 
-    public void setVersionOrDefault() {
+    void setVersionOrDefault() {
         if (version != null) {
             version = version++;
         } else {
