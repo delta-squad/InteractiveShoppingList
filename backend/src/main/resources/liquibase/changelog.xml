@@ -22,4 +22,6 @@
                  relativeToChangelogFile="true"/>
         <include file="alter-product-table.xml"
                  relativeToChangelogFile="true"/>
+        <include file="alter-created-fields.xml"
+                 relativeToChangelogFile="true"/>
 </databaseChangeLog>
