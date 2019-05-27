@@ -23,3 +23,8 @@
 .content-container {
   height: 90vh;
 }
+.pointOnText:hover
+{
+  color: #000000;
+  cursor: pointer;
+}
