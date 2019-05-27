@@ -18,5 +18,6 @@
         </addColumn>
         <addDefaultValue tableName="list_content" columnName="version" columnDataType="int" defaultValue="1"/>
         <addDefaultValue tableName="permission" columnName="version" columnDataType="int" defaultValue="1"/>
+        <renameColumn tableName="product" oldColumnName="parent" newColumnName="parent_id" columnDataType="int"/>
     </changeSet>
 </databaseChangeLog>
