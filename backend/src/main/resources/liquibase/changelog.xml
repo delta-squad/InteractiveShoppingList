@@ -24,4 +24,6 @@
                  relativeToChangelogFile="true"/>
         <include file="alter-created-fields.xml"
                  relativeToChangelogFile="true"/>
+        <include file="standarize-tables.xml"
+                 relativeToChangelogFile="true"/>
 </databaseChangeLog>
