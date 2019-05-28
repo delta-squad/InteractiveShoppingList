@@ -7,6 +7,7 @@ buildscript {
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath ("org.liquibase:liquibase-gradle-plugin:1.1.1")
 	}
 }
 
@@ -14,13 +15,13 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: "liquibase"
 
 sourceCompatibility = 1.8
 
 repositories {
 	mavenCentral()
 }
-
 
 dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-data-jpa')
@@ -37,6 +38,8 @@ dependencies {
 	compile("org.webjars:jquery:3.1.0")
 	compile 'mysql:mysql-connector-java'
 	compile 'org.liquibase:liquibase-core'
+
+	compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-csv', version: '2.9.9'
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 
 	implementation(project(':frontend'))

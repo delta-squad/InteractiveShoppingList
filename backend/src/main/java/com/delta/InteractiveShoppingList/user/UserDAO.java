@@ -28,4 +28,9 @@ public class UserDAO {
             return true;
         }
     }
+
+    public User getUserById(Long ownerId) {
+
+        return entityManager.find(User.class, ownerId);
+    }
 }

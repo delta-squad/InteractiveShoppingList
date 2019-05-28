@@ -1,5 +1,9 @@
 package com.delta.InteractiveShoppingList.listContent;
 
+import com.delta.InteractiveShoppingList.list.ShoppingList;
+import com.delta.InteractiveShoppingList.product.Product;
+import com.delta.InteractiveShoppingList.user.User;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
@@ -10,38 +14,37 @@ public class ListContent {
 
     @Id
     @GeneratedValue
-    @Column(name = "id")
     private Long id;
-
-    @Column(name = "list_id")
-    private Long listId;
-
-    @Column(name = "version")
+    @ManyToOne
+    private ShoppingList list;
     private Integer version;
-
-    @Column(name = "product_id")
-    private Long productId;
-
-    @Column(name = "added_by")
-    private Long addedBy;
-    @Column(name = "amount")
+    @ManyToOne
+    private Product product;
+    @ManyToOne
+    private User addedBy;
     private Float amount;
-
-    @Column(name = "amount_unit")
     private String amountUnit;
-
-    @Column(name = "time_of_addition")
     private LocalDate created;
 
-    public ListContent(Long listId, Long productId, Long addedBy, Float amount, String amountUnit) {
-
-        this.listId = listId;
-        this.productId = productId;
+    public ListContent(ShoppingList list, Integer version, Product product, User addedBy, Float amount, String amountUnit, LocalDate created) {
+        this.list = list;
+        this.version = version;
+        this.product = product;
         this.addedBy = addedBy;
         this.amount = amount;
         this.amountUnit = amountUnit;
-
+        this.created = created;
     }
+
+    public ListContent(ShoppingList list, Product product, User addedBy, Float amount, String amountUnit) {
+        this.list = list;
+        this.version = 1;
+        this.product = product;
+        this.addedBy = addedBy;
+        this.amount = amount;
+        this.amountUnit = amountUnit;
+    }
+
 
     public Long getId() {
         return id;
@@ -49,6 +52,14 @@ public class ListContent {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public ShoppingList getList() {
+        return list;
+    }
+
+    public void setList(ShoppingList list) {
+        this.list = list;
     }
 
     public Integer getVersion() {
@@ -59,19 +70,19 @@ public class ListContent {
         this.version = version;
     }
 
-    public Long getProductId() {
-        return productId;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
-    public Long getAddedBy() {
+    public User getAddedBy() {
         return addedBy;
     }
 
-    public void setAddedBy(Long addedBy) {
+    public void setAddedBy(User addedBy) {
         this.addedBy = addedBy;
     }
 
@@ -99,14 +110,6 @@ public class ListContent {
         this.created = created;
     }
 
-    public Long getListId() {
-        return listId;
-    }
-
-    public void setListId(Long listId) {
-        this.listId = listId;
-    }
-
     public void setVersionOrDefault() {
         if (version != null) {
             version = version++;
@@ -114,7 +117,5 @@ public class ListContent {
             version = 1;
         }
     }
-
-    public ListContent() {
-    }
 }
+

@@ -1,6 +1,9 @@
 package com.delta.InteractiveShoppingList.list;
 
+import com.delta.InteractiveShoppingList.user.User;
+
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -9,42 +12,26 @@ public class ShoppingList {
 
     @Id
     @GeneratedValue
-    @Column(name = "id")
     private Long id;
-
-    @Column(name = "version")
     private Integer version;
-
-    @Column(name = "title")
     private String title;
-
-    @Column(name = "owner")
-    private Long owner;
-
-    @Column(name = "created")
     private Date created;
-
-    @Column(name = "last_edition")
     private Date lastEdition;
 
-    public ShoppingList(Integer version, String title, Long owner, Date created, Date lastEdition) {
+    public ShoppingList(Integer version, String title, Date created, Date lastEdition) {
         this.version = version;
         this.title = title;
-        this.owner = owner;
         this.created = created;
         this.lastEdition = lastEdition;
     }
 
-    public ShoppingList() {
-    }
-
-    public ShoppingList(String title, Long owner) {
+    public ShoppingList(String title) {
         this.title = title;
-        this.owner = owner;
         this.version = 1;
         this.created = new Date();
-        this.lastEdition = new Date();
+        this.lastEdition= new Date();
     }
+
 
     public Long getId() {
         return id;
@@ -68,14 +55,6 @@ public class ShoppingList {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public Long getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Long owner) {
-        this.owner = owner;
     }
 
     public Date getCreated() {

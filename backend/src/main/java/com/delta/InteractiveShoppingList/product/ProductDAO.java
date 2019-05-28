@@ -16,14 +16,12 @@ public class ProductDAO {
 
 
     public Long addProduct(Product product) {
-        product.setVersionOrDefault();
         entityManager.persist(product);
         entityManager.flush();
         return product.getId();
     }
 
-
-    public List getList() {
+    public List<Product> getList() {
         return entityManager.createQuery("select p from Product p").getResultList();
     }
 
@@ -34,5 +32,12 @@ public class ProductDAO {
 
     public Product getById(Long productId) {
         return entityManager.find(Product.class, productId);
+    }
+
+    public void saveAll(List<Product> products) {
+        for (Product product : products) {
+            product.setVersionOrDefault();
+            entityManager.persist(product);
+        }
     }
 }

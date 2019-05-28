@@ -3,7 +3,7 @@ package com.delta.InteractiveShoppingList.listContent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -14,7 +14,7 @@ public class ListContentController {
     ListContentService listContentService;
 
     @GetMapping("/{listId}/listContent")
-    public ArrayList<ListContentShowDTO> getListContentsById(@PathVariable Long listId) {
+    public List<ListContentShowDTO> getListContentsById(@PathVariable Long listId) {
         return listContentService.getListOfContentsById(listId);
     }
 
