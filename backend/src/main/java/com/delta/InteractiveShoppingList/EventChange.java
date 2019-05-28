@@ -19,11 +19,11 @@ public class EventChange {
     private long listId;
     private String title;
     private List<Event> eventList;
-    public EventChange(@JsonProperty("uuid") UUID uuid, @JsonProperty("userID") long userID,
-                       @JsonProperty("listID") long listId, @JsonProperty("title") String title,
+    public EventChange(@JsonProperty("uuid") UUID uuid, @JsonProperty("userId") long userId,
+                       @JsonProperty("listId") long listId, @JsonProperty("title") String title,
                        @JsonProperty("eventList") List<Event> eventList){
         this.uuid = uuid;
-        this.userId = userID;
+        this.userId = userId;
         this.listId = listId;
         this.title = title;
         this.eventList = eventList;

@@ -42,6 +42,7 @@ export class DashboardComponent implements OnInit {
       height: '90vh',
       width: '60%'
     });
+
     dialogRef.afterClosed().subscribe(result => {
       if (result != undefined) {
         let index = this.shoppingLists.indexOf(list);
@@ -63,6 +64,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnDestroy(){
     this.EventService.disconnect();
+    console.log("Disconnected");
   }
 
   private calculateColumnsNumber() {

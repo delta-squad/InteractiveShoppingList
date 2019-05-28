@@ -20,8 +20,7 @@ export class EventService {
     let that = this;
     this.ws.connect({}, function (frame) {
       that.ws.subscribe(that.wsSubscribe, function (message){
-        console.log("connected");
-
+        console.log(message);
       });
     })
   }
