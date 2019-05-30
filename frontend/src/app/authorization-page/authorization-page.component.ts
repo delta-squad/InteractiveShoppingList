@@ -14,7 +14,7 @@ import {Observable} from "rxjs";
 export class AuthorizationPageComponent implements OnInit {
 
   ngOnInit() {
-    sessionStorage.setItem('token', ''); // co to do chu
+    sessionStorage.setItem('token', ''); // co to do chu //Sam kur nie wiem xD
   };
 
   get userName() {
@@ -57,7 +57,7 @@ export class AuthorizationPageComponent implements OnInit {
   }
   login() {
     let url = 'http://localhost:8080/login';
-    let result = this.http.post<Observable<boolean>>(url, {
+     this.http.post<Observable<boolean>>(url, {
       userName: this.loginForm.get('userName').value,
       password: this.loginForm.get('password').value
     }).subscribe(isValid => {
@@ -75,7 +75,7 @@ export class AuthorizationPageComponent implements OnInit {
   }
   register() {
     let url = 'http://localhost:8080/register';
-    let result = this.http.post<Observable<boolean>>(url, {
+    this.http.post<Observable<boolean>>(url, {
       emailAddress: this.registrationForm.get('newEmail').value,
       userName: this.registrationForm.get('newUserName').value,
       password: this.registrationForm.get('newPassword').value

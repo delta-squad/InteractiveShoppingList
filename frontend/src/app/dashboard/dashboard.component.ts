@@ -3,6 +3,9 @@ import {MatDialog} from "@angular/material";
 import {ShoppingListDialogComponent} from "./shopping-list-dialog/shopping-list-dialog.component";
 import {ShoppingList} from "../models/shoppingList";
 import {DashboardService} from "./dashboard.service";
+import {Router} from "@angular/router";
+import {Observable} from "rxjs";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-dashboard',
@@ -14,10 +17,10 @@ export class DashboardComponent implements OnInit {
   columnsNumber: number;
   bigScreenSize: number = 850;
   mediumScreenSize: number = 550;
-
+  temp: boolean = true;
   shoppingLists: Array<ShoppingList>;
 
-  constructor(public dialog: MatDialog, private _service: DashboardService) {
+  constructor(public dialog: MatDialog, private _service: DashboardService, private router: Router,private http: HttpClient) {
   }
 
   getData() {
@@ -46,7 +49,21 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
-
+  aboutPage(){
+    alert("Authors(Alphabetically): Krzysztof Borowiecki, Daniel Cyktor, Tomasz Florczuk, Kamil Kamyszek, Sebastian Stanclik") //alfabetycznie guys alfabetycznie
+  }
+  refreshPage(){
+    this.router.navigateByUrl('dashboard'); //nic sie nie dzieje bo chyba dzieje sie tak szybko ze zapier... jak swiatlo xD
+  }
+ logOut(){
+   alert("Succesfully logged out!");
+   let url = 'http://localhost:8080/login';
+   this.http.post<Observable<boolean>>(url, {
+     userName: '       ',
+     password: '       '
+   });
+   this.router.navigateByUrl('**'); //lecimy do strony glownej
+ }
   ngOnInit() {
     this.getData();
     this.calculateColumnsNumber();

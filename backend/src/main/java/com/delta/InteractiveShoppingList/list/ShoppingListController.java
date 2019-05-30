@@ -1,5 +1,6 @@
 package com.delta.InteractiveShoppingList.list;
 
+import com.delta.InteractiveShoppingList.permission.PermissionDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,6 +30,10 @@ public class ShoppingListController {
         return shoppingListService.add(shoppingListDTO);
     }
 
+    @PostMapping("/list/addUser")
+    public void addUserToList(@RequestBody PermissionDTO permissionDto) {
+        shoppingListService.addUserToList(permissionDto);
+    }
 
 
 }

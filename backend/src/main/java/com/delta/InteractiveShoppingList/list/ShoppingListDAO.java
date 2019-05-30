@@ -21,10 +21,15 @@ public class ShoppingListDAO {
     public List<ShoppingList> getListsByUserId(Long userId) {
 
         return entityManager
-                .createQuery("select p from Permision p where p.user.id like :userId")
+                .createQuery("select l from ShoppingList l join Permission p on l.id = p.list.id where p.user.id like :userId")
                 .setParameter("userId", userId)
                 .getResultList();
-
+        /*
+        return entityManager
+                .createQuery("select p from Permission p where p.user.id like :userId")
+                .setParameter("userId", userId)
+                .getResultList();
+*/
 
     }
 

@@ -1,11 +1,11 @@
 <mat-toolbar color="primary" class="navBar">
   Interactive Shopping List
   <div fxShow="true" fxHide.lt-md="true">
-    <span>Home</span>
+    <span class="pointOnText" (click)="refreshPage()">Home</span>
     <span class="spacer"></span>
-    <span>About</span>
+    <span class="pointOnText" (click)="aboutPage()">About</span>
     <span class="spacer"></span>
-    <span>Log out</span>
+    <span class="pointOnText" (click)="logOut()">Log out</span>
   </div>
   <div fxShow="true" fxHide.gt-sm="true">
     <button mat-icon-button (click)="sidenav.toggle()">
@@ -21,7 +21,7 @@
       <span class="spacer"></span>
       <span>About</span>
       <span class="spacer"></span>
-      <span>Log out</span>
+      <span >Log out</span>
     </div>
   </mat-sidenav>
 
