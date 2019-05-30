@@ -6,7 +6,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-        <include file="create-user-table.xml"
+  <!--      <include file="create-user-table.xml"
                  relativeToChangelogFile="true"/>
         <include file="create-list-table.xml"
                  relativeToChangelogFile="true"/>
@@ -25,5 +25,5 @@
         <include file="alter-created-fields.xml"
                  relativeToChangelogFile="true"/>
         <include file="standarize-tables.xml"
-                 relativeToChangelogFile="true"/>
+                 relativeToChangelogFile="true"/>-->
 </databaseChangeLog>

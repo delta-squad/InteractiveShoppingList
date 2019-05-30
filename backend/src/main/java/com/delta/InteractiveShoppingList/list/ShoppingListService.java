@@ -2,6 +2,7 @@ package com.delta.InteractiveShoppingList.list;
 
 import com.delta.InteractiveShoppingList.permission.Permission;
 import com.delta.InteractiveShoppingList.permission.PermissionDAO;
+import com.delta.InteractiveShoppingList.permission.PermissionDTO;
 import com.delta.InteractiveShoppingList.user.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -51,4 +52,9 @@ public class ShoppingListService {
                 shoppingList.getTitle());
     }
 
+    void addUserToList(PermissionDTO permissionDto) {
+        permissionDAO.add(new Permission(
+                userDAO.getUserById(permissionDto.getUserId()),
+                shoppingListDAO.getById(permissionDto.getListId())));
+    }
 }

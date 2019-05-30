@@ -23,8 +23,12 @@ public class Permission {
 
     public Permission(User user, ShoppingList list) {
         this.version = 1;
+        this.role = new Role((long) 1, "OWNER");
         this.user = user;
         this.list = list;
+    }
+
+    public Permission() {
     }
 
     public Long getId() {

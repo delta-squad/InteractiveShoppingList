@@ -11,4 +11,8 @@ public class Role {
     private Long id;
     private String status;
 
+    public Role(Long id, String status) {
+        this.id = id;
+        this.status = status;
+    }
 }

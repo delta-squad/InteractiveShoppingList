@@ -32,6 +32,8 @@ public class ShoppingList {
         this.lastEdition= new Date();
     }
 
+    public ShoppingList() {
+    }
 
     public Long getId() {
         return id;
