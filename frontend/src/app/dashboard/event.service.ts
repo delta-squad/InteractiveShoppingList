@@ -6,11 +6,12 @@ import * as SockJs from 'sockjs-client';
   providedIn: 'root'
 })
 export class EventService {
-  serverUrl = "http://localhost:4200";
-  wsEndpoint: string = this.serverUrl + "/dashboard";
-  wsSubscribe: string = "/api/list/eventChange/";
-  wsSend: string = "api/list/eventChange/topic/";
+  serverUrl = 'ws://localhost:8080';
+  wsEndpoint: string = this.serverUrl + '/gs-guide-websocket';
+  wsSubscribe: string = '/topic/eventChange/';
+  wsSend: string = '/app/eventChange/';
   ws: any;
+  name: string;
   event: any;
   constructor() { }
 
@@ -33,9 +34,7 @@ export class EventService {
   }
 
   sendEvent() {
-    let data = JSON.stringify({
-      'event' : this.event
-    })
-    this.ws.send(this.wsSend, {}, data);
+    console.log("Wysylanie");
+    this.ws.send(this.wsSend, {}, "Wiadomosc");
   }
 }

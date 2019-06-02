@@ -2,6 +2,7 @@ import {Component, HostListener, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 import {ShoppingList} from "../../models/shoppingList";
 import {Product} from "../../models/product";
+import {EventService} from "../event.service";
 
 @Component({
   selector: 'app-shopping-list-dialog',
@@ -15,7 +16,8 @@ export class ShoppingListDialogComponent implements OnInit {
   oldProducts: Array<Product>;
 
   constructor(public dialogRef: MatDialogRef<ShoppingListDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any) {
+              @Inject(MAT_DIALOG_DATA) public data: any,
+              private EventService: EventService ) {
     this.evaluateShoppingList();
     this.editTitleMode = !this.nameExists(this.shoppingList.title);
     dialogRef.backdropClick().subscribe(() => {
@@ -42,6 +44,10 @@ export class ShoppingListDialogComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngOnClose(){
+
+  }
+
   removeProductAt(index: number) {
     this.shoppingList.products.splice(index, 1);
   }
@@ -49,6 +55,7 @@ export class ShoppingListDialogComponent implements OnInit {
   saveOnClose() {
     if (this.nameExists(this.shoppingList.title)) {
       this.dialogRef.close(this.shoppingList);
+      this.EventService.sendEvent();
     }
   }
 

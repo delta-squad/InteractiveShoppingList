@@ -4,6 +4,7 @@ import {ShoppingListDialogComponent} from "./shopping-list-dialog/shopping-list-
 import {ShoppingList} from "../models/shoppingList";
 import {DashboardService} from "./dashboard.service";
 import {EventService} from "./event.service";
+import { v4 as uuid } from 'uuid';
 import {forEach} from "@angular/router/src/utils/collection";
 
 @Component({
@@ -26,11 +27,6 @@ export class DashboardComponent implements OnInit {
     this._service.getShoppingLists()
         .subscribe(data => this.shoppingLists = data, error => console.error(error));
 
-  }
-
-  wsConnection(){
-    let that = this;
-    this.EventService.connect();
   }
 
   openDialog(list: ShoppingList): void {
@@ -59,7 +55,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.getData();
     this.calculateColumnsNumber();
-    this.wsConnection();
+    this.EventService.connect();
   }
 
   ngOnDestroy(){
@@ -83,5 +79,4 @@ export class DashboardComponent implements OnInit {
     } else this.columnsNumber = 1;
   }
 
-  public
 }
